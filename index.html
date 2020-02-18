@@ -9,14 +9,37 @@
 </head>
 
 <body>
+
     <header>
         <h1>Marvel Memory Game</h1>
     </header>
 
+    <!-- game overlays -->
+
+    <div class="overlay-text visible">
+        Click to start!
+    </div>
+    <div id="game-over-text" class="overlay-text">
+        GAME OVER! <span>Click to restart</span>
+    </div>
+    <div id="you-won-text" class="overlay-text">
+        YOU WON!<span>Click to restart</span>
+    </div>
+
+    <div class="game-info-container">
+        <div class="game-info">
+            Time:<span id="time-remaining">100</span>
+        </div>
+        <div class="game-info">
+            Flips:<span id="flips">0</span>
+        </div>
+    </div>
+
 
     <section class="memory-game">
+
         <div class="memory-card" data-image="hulk">
-            <img class="front-face" src="images/hulk.jpg" alt="hulk images">
+            <img class="front-face" src="images/hulk.jpg" alt="hulk image">
             <img class="back-face" src="images/marvel-logo.png" alt="marvel-logo">
         </div>
         <div class="memory-card" data-image="thor">
