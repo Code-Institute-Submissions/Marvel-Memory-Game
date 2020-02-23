@@ -33,16 +33,16 @@ body {
     align-items: center;
     z-index: 100;
 }
-
-.overlay-text span {
-    font-size: .3em;
-}
-
 .overlay-text.visible {
     animation: overlay-grow 500ms forwards;
     display: flex;
     flex-direction: column;
 }
+.overlay-text span {
+    font-size: .3em;
+}
+
+
 
 @keyframes overlay-grow {
     from {
@@ -84,6 +84,21 @@ body {
     transform: rotateY(180deg);
 }
 
+.memory-card.flip.matched {
+    background-image: linear-gradient(45deg, black, white);
+    background-size: 400%;
+    animation: match-animation 1.5s infinite alternate;
+}
+
+@keyframes match-animation {
+    0% {
+        background-position: left;
+    }
+    100% {
+        background-position: right;
+    }
+}
+
 .front-face,
 .back-face {
     height: 100%;
@@ -97,4 +112,9 @@ body {
 
 .front-face {
     transform: rotateY(180deg);
+   
 }
+
+
+
+
