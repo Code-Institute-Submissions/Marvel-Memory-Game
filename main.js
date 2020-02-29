@@ -1,9 +1,36 @@
 $(document).ready(function () {
+    //timer and flip count
+    let timer;
+    let resetCounter;
+    console.log($('#time-remaining').html());
+    
+    function startTimer() {
+    timer = 100;
+    
+       resetCounter = setInterval(() => {
+           let countDown = timer --;
+           $('#time-remaining').html(countDown);
+
+           if (countDown === 0) {
+               clearInterval(resetCounter);
+             $('.memory-card').removeClass("flip");
+             $('#game-over-text').addClass('visible');
+             $('#game-over-text').click(()=>{
+                $('#game-over-text').remove('visible');
+                
+             })  
+           }
+           //console.log();
+       }, 1000);
+       
+    }
+    
     //select all cards
     const cards = document.querySelectorAll('.memory-card');
     // Click to start overlay
     $(".overlay-text").click(function () {
         $(".overlay-text").removeClass("visible");
+         startTimer();
     });
 
     function shuffleCards() {
@@ -22,6 +49,8 @@ $(document).ready(function () {
     }
 
     shuffleCards();
+
+
 
     let isCardFlipped = false;
     let lockCards = false;
@@ -74,6 +103,12 @@ $(document).ready(function () {
 
         matchedCards.push(fistCard);
         matchedCards.push(secondCard);
+        
+        let matchedPairs = matchedCards.length;
+        let matches = matchedPairs / 2;
+        $('#pairs').html(matches);
+        console.log(matches);
+       
 
         if (matchedCards.length === 12) {
             matchedCards.length = 0;
@@ -81,10 +116,10 @@ $(document).ready(function () {
                 $(".memory-card").removeClass("flip");
                 $("#you-won-text").addClass("visible");
                 $("#you-won-text").click(function () {
-                    
+
                     //let matchedCards = [];
                     shuffleCards();
-                    
+
                 });
             }, 1500);
             //console.log("you won!");
