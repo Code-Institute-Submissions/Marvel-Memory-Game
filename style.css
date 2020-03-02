@@ -2,19 +2,27 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+}
+
+@font-face {
+    font-family: marvelFont;
+    src: url('marvel/Marvel.ttf') format("truetype");
 }
 
 h1 {
+    
     color: black;
 }
 
 body {
+    font-family: marvelFont;
     display: flex;
     flex-direction: column;
     align-items: center;
     
     height: 100vh;
-    background-color: rgb(92, 7, 7);
+    background-image: url('images/ironman-gb-image.jpg');
 }
 
 .game-info-container{
