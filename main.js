@@ -1,3 +1,11 @@
+class audioControl {
+    constructor() {
+        this.bgMusic = new Audio('sounds/backgroundMusic.mp3');
+    }
+    startMusic(){
+        this.bgMusic.play();
+    }
+}
 $(document).ready(function () {
     //timer and flip count
     let timer;
@@ -31,10 +39,11 @@ $(document).ready(function () {
 
     //select all cards
     const cards = document.querySelectorAll('.memory-card');
+    let audio = new audioControl;
     // Click to start overlay
     $(".overlay-text").click(function () {
         $(".overlay-text").removeClass("visible");
-
+        audio.startMusic();
         startTimer();
     });
 
