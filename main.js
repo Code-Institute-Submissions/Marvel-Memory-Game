@@ -5,17 +5,17 @@ class audioControl {
         this.matchedSound = new Audio('sounds/matchedSound.wav');
         this.victory = new Audio('sounds/badass-victory.wav');
     }
-    startMusic(){
+    startMusic() {
         this.bgMusic.currentTime = 0;
         this.bgMusic.play();
     }
 
     stopMusic() {
         this.bgMusic.pause();
-        
+
     }
 
-    flip(){
+    flip() {
         this.flipSound.play();
     }
 
@@ -27,14 +27,15 @@ class audioControl {
         this.victory.play();
     }
 }
-$(document).ready(function () {
+$(document).ready(function() {
+
     //timer and flip count
     let audio = new audioControl;
     let timer;
     let resetCounter;
     let matchedCards = [];
     console.log($('#time-remaining').html());
-    
+
     function startTimer() {
         timer = 60;
 
@@ -44,15 +45,18 @@ $(document).ready(function () {
 
             if (countDown === 0) {
                 clearInterval(resetCounter);
-                
-                $('.memory-card').removeClass("flip");
-                $('.memory-card').removeClass("matched");
+                audio.stopMusic();
+
+                $('.memory-card').removeClass('flip');
+                $('.memory-card').removeClass('matched');
                 $('#game-over-text').addClass('visible');
+                audio.victorySound();
                 $('#game-over-text').click(() => {
                     $('#game-over-text').remove('visible');
                     shuffleCards();
                     $('#pairs').html(0);
                     matchedCards = [];
+
 
                 })
             }
@@ -63,24 +67,24 @@ $(document).ready(function () {
 
     //select all cards
     const cards = document.querySelectorAll('.memory-card');
-    
+
     // Click to start overlay
-    $(".overlay-text").click(function () {
-        $(".overlay-text").removeClass("visible");
+    $('.overlay-text').click(function() {
+        $('.overlay-text').removeClass('visible');
         audio.startMusic();
         startTimer();
     });
 
     function shuffleCards() {
         // shuffle using flex order value
-        cards.forEach(function (card) {
-           
-            let shufflePos = Math.floor(Math.random() * 12);
+        cards.forEach(function(card) {
+
+            let shufflePos = Math.floor(Math.random() * 16);
             card.style.order = shufflePos;
 
-            cards.forEach(function (card) {
-                card.addEventListener('click', flipCard, function(){
-                    
+            cards.forEach(function(card) {
+                card.addEventListener('click', flipCard, function() {
+
                 });
             });
         });
@@ -92,10 +96,10 @@ $(document).ready(function () {
     let lockCards = false;
     let fistCard;
     let secondCard;
-    
+
     // Flip card with a click
     function flipCard() {
-        
+
         if (lockCards) return;
         if (this === fistCard) return;
 
@@ -146,18 +150,18 @@ $(document).ready(function () {
 
 
 
-        if (matchedCards.length === 12) {
+        if (matchedCards.length === 16) {
             clearInterval(resetCounter);
             matchedCards.length = 0;
             matches = 0;
             audio.stopMusic();
-            setTimeout(function () {
+            setTimeout(function() {
                 audio.victorySound();
-                $(".memory-card").removeClass("flip");
-                $("#you-won-text").addClass("visible");
-                $(".memory-card").removeClass("matched");
-                $("#you-won-text").click(function () {
-                    
+                $('.memory-card').removeClass('flip');
+                $('#you-won-text').addClass('visible');
+                $('.memory-card').removeClass('matched');
+                $('#you-won-text').click(function() {
+
                     shuffleCards();
                     $('#pairs').html(0);
                     matchedCards = [];
@@ -173,13 +177,14 @@ $(document).ready(function () {
     function unflipCards() {
         lockCards = true;
 
-        setTimeout(function () {
+        setTimeout(function() {
             fistCard.classList.remove('flip');
             secondCard.classList.remove('flip');
 
             resetGame();
         }, 1500);
     }
+
     function resetGame() {
         isCardFlipped = false;
         lockCards = false;

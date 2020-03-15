@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="jQuery v3.4.1.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+
     <title>Marvel Memory Game</title>
 </head>
 
@@ -18,20 +19,19 @@
 
         <!-- game overlays -->
         <!--add class visible to overlay-text -->
-        <div class="overlay-text visible">
-            Click to start!
-
+        <div class="overlay-text visible" id="start-overlay">
+            CLICK TO START!
         </div>
         <div id="game-over-text" class="overlay-text">
-            GAME OVER! <span>Click to restart</span>
+            GAME OVER! <span>CLICK TO RESTART</span>
         </div>
         <div id="you-won-text" class="overlay-text">
-            YOU WON!<span>Click to restart</span>
+            YOU WON!<span>CLICK TO RESTART</span>
         </div>
 
         <div class="game-info-container">
             <div class="game-info">
-                Time:<span id="time-remaining">100</span>
+                Time:<span id="time-remaining"></span>
             </div>
             <div class="game-info">
                 Pairs:<span id="pairs">0</span>
@@ -39,7 +39,7 @@
         </div>
 
 
-        <section class="memory-game">
+        <section class="memory-game container-fluid">
 
             <div class="memory-card" data-image="hulk">
                 <img class="front-face matched" src="images/hulk.jpg" alt="hulk image">
@@ -81,17 +81,35 @@
                 <img class="front-face" src="images/dr doom.jpg" alt="dr doom image">
                 <img class="back-face" src="images/marvel-logo.png" alt="marvel-logo">
             </div>
-            <div class="memory-card" data-image="captain britan">
-                <img class="front-face" src="images/captain britan.jpg" alt="captain britan image">
+            <div class="memory-card" data-image="captain britain">
+                <img class="front-face" src="images/captain britain.jpg" alt="captain britain image">
                 <img class="back-face" src="images/marvel-logo.png" alt="marvel-logo">
             </div>
-            <div class="memory-card" data-image="captain britan">
-                <img class="front-face" src="images/captain britan.jpg" alt="captain britan image">
+            <div class="memory-card" data-image="captain britain">
+                <img class="front-face" src="images/captain britain.jpg" alt="captain britain image">
+                <img class="back-face" src="images/marvel-logo.png" alt="marvel-logo">
+            </div>
+            <div class="memory-card" data-image="wolverine">
+                <img class="front-face" src="images/wolverine.jpg" alt="wolverine image">
+                <img class="back-face" src="images/marvel-logo.png" alt="marvel-logo">
+            </div>
+            <div class="memory-card" data-image="wolverine">
+                <img class="front-face" src="images/wolverine.jpg" alt="wolverine image">
+                <img class="back-face" src="images/marvel-logo.png" alt="marvel-logo">
+            </div>
+            <div class="memory-card" data-image="deadpool">
+                <img class="front-face" src="images/deadpool.jpg" alt="deadpool image">
+                <img class="back-face" src="images/marvel-logo.png" alt="marvel-logo">
+            </div>
+            <div class="memory-card" data-image="deadpool">
+                <img class="front-face" src="images/deadpool.jpg" alt="deadpool image">
                 <img class="back-face" src="images/marvel-logo.png" alt="marvel-logo">
             </div>
 
         </section>
     </div>
+    <script type="text/javascript" src="jQuery v3.4.1.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </body>
 
 </html>

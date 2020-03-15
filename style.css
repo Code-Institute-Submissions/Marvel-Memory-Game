@@ -2,17 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
 @font-face {
     font-family: marvelFont;
-    src: url('marvel/Marvel.ttf') format("truetype");
-}
-
-h1 {
-    
-    color: black;
+    src: url('fonts/Marvel.ttf') format('truetype');
 }
 
 body {
@@ -20,20 +14,30 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
     height: 100vh;
     background-image: url('images/ironman-gb-image.jpg');
-    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .wrapper {
-    min-height: 100vh;
+    min-height: 205vh;
     min-width: 100%;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
 }
 
-.game-info-container{
+h1 {
     text-align: center;
+    color: white;
+    font-size: 4em;
+    letter-spacing: 0.2rem;
+}
+
+.game-info-container {
+    text-align: center;
+    color: aqua;
 }
 
 .overlay-text {
@@ -44,50 +48,73 @@ body {
     right: 0;
     left: 0;
     bottom: 0;
+    text-align: center;
     justify-content: center;
     align-items: center;
     z-index: 100;
 }
+
 .overlay-text.visible {
     animation: overlay-grow 500ms forwards;
     display: flex;
     flex-direction: column;
 }
+
 .overlay-text span {
     font-size: .3em;
 }
 
-
-
 @keyframes overlay-grow {
     from {
-        background-color: rgba(0, 0, 0 ,0 );
+        background-color: rgba(0, 0, 0, 0);
         font-size: 0;
     }
     to {
-        background-color: rgba(0, 0, 0 ,0.75);
+        background-color: rgba(0, 0, 0, 0.75);
         font-size: 9em;
     }
 }
 
 .memory-game {
-    width: 640px;
-    height: 640px;
+    height: 75vh;
+    width: 65vh;
     margin: auto;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1em;
     flex-wrap: wrap;
     perspective: 1000px;
-    
 }
+
 .memory-card {
     position: relative;
-    width: 24%;
-    height: 33.333%;
+    width: 100%;
+    height: 100%;
     margin: 0.2vh;
-    background-color: red;
+    background-color: rgb(233, 33, 33);
+    border-radius: 5px;
     transform: scale(1);
     transform-style: preserve-3d;
     transition: transform .75s;
+}
+
+
+/* media queries */
+
+@media screen and (max-width: 767px) {
+    .memory-game {
+        width: 40vh;
+        display: grid;
+        margin: auto;
+        grid-template-columns: repeat( 2, 1fr);
+        grid-auto-rows: 20vh;
+        grid-column-gap: 1em;
+        grid-row-gap: 2em;
+    }
+    .memory-card {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .memory-card:active {
@@ -127,9 +154,4 @@ body {
 
 .front-face {
     transform: rotateY(180deg);
-   
 }
-
-
-
-
