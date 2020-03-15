@@ -46,24 +46,34 @@ $(document).ready(function() {
             if (countDown === 0) {
                 clearInterval(resetCounter);
                 audio.stopMusic();
+                matchedCards = [];
+                timeUp();
+            }
+        }, 1000);
 
+        function timeUp() {
+            setTimeout(function() {
+                audio.victorySound();
                 $('.memory-card').removeClass('flip');
                 $('.memory-card').removeClass('matched');
                 $('#game-over-text').addClass('visible');
-                audio.victorySound();
-                $('#game-over-text').click(() => {
-                    $('#game-over-text').remove('visible');
-                    shuffleCards();
-                    $('#pairs').html(0);
-                    matchedCards = [];
+            }, 1000)
+
+            $('#game-over-text').click(() => {
+                $('#game-over-text').remove('visible');
+                shuffleCards();
+                $('#pairs').html(0);
 
 
-                })
-            }
-            //console.log();
-        }, 1000);
 
+            })
+        }
     }
+
+    //console.log();
+
+
+
 
     //select all cards
     const cards = document.querySelectorAll('.memory-card');

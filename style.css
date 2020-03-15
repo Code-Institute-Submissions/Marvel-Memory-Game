@@ -9,6 +9,11 @@
     src: url('fonts/Marvel.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: comicFont;
+    src: url('fonts/comicFont.ttf');
+}
+
 body {
     font-family: marvelFont;
     display: flex;
@@ -23,21 +28,27 @@ body {
 }
 
 .wrapper {
-    min-height: 205vh;
+    min-height: 100vh;
     min-width: 100%;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
 }
 
 h1 {
     text-align: center;
-    color: white;
+    color: red;
     font-size: 4em;
     letter-spacing: 0.2rem;
 }
 
 .game-info-container {
     text-align: center;
-    color: aqua;
+    color: red;
+    font-size: 2.5em;
+}
+
+.game-info-container span {
+    font-family: comicFont;
+    font-size: 1em;
 }
 
 .overlay-text {
@@ -102,6 +113,9 @@ h1 {
 /* media queries */
 
 @media screen and (max-width: 767px) {
+    .wrapper {
+        min-height: 205vh;
+    }
     .memory-game {
         width: 40vh;
         display: grid;
