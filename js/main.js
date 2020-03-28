@@ -1,9 +1,9 @@
 class audioControl {
     constructor() {
-        this.bgMusic = new Audio('sounds/backgroundMusic.mp3');
-        this.flipSound = new Audio('sounds/card-flip.wav');
-        this.matchedSound = new Audio('sounds/matchedSound.wav');
-        this.victory = new Audio('sounds/badass-victory.wav');
+        this.bgMusic = new Audio('assets/sounds/backgroundMusic.mp3');
+        this.flipSound = new Audio('assets/sounds/card-flip.wav');
+        this.matchedSound = new Audio('assets/sounds/matchedSound.wav');
+        this.victory = new Audio('assets/sounds/badass-victory.wav');
     }
     startMusic() {
         this.bgMusic.currentTime = 0;
