@@ -1,33 +1,43 @@
-class audioControl {
-    constructor() {
-        this.bgMusic = new Audio('assets/sounds/backgroundMusic.mp3');
-        this.flipSound = new Audio('assets/sounds/card-flip.wav');
-        this.matchedSound = new Audio('assets/sounds/matchedSound.wav');
-        this.victory = new Audio('assets/sounds/badass-victory.wav');
-    }
-    startMusic() {
-        this.bgMusic.currentTime = 0;
-        this.bgMusic.play();
-    }
-
-    stopMusic() {
-        this.bgMusic.pause();
-
-    }
-
-    flip() {
-        this.flipSound.play();
-    }
-
-    match() {
-        this.matchedSound.play();
-    }
-
-    victorySound() {
-        this.victory.play();
-    }
-}
 $(document).ready(function() {
+
+    const baseURL = "http://gateway.marvel.com/v1/public/characters?"
+    const apikey = "&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2"
+
+    $.getJSON(baseURL + apikey, function(data) {
+        console.log(data.attributionText);
+        let footer = document.getElementById('footer-text');
+        footer.innerText = data.attributionText.toUpperCase();
+    });
+    class audioControl {
+        constructor() {
+            this.bgMusic = new Audio('assets/sounds/backgroundMusic.mp3');
+            this.flipSound = new Audio('assets/sounds/card-flip.wav');
+            this.matchedSound = new Audio('assets/sounds/matchedSound.wav');
+            this.victory = new Audio('assets/sounds/badass-victory.wav');
+        }
+        startMusic() {
+            this.bgMusic.currentTime = 0;
+            this.bgMusic.play();
+        }
+
+        stopMusic() {
+            this.bgMusic.pause();
+
+        }
+
+        flip() {
+            this.flipSound.play();
+        }
+
+        match() {
+            this.matchedSound.play();
+        }
+
+        victorySound() {
+            this.victory.play();
+        }
+    }
+
 
     //timer and flip count
     let audio = new audioControl;

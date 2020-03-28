@@ -114,7 +114,7 @@ h1 {
 
 @media screen and (max-width: 767px) {
     .wrapper {
-        min-height: 205vh;
+        min-height: 215vh;
     }
     .memory-game {
         width: 40vh;
@@ -124,6 +124,7 @@ h1 {
         grid-auto-rows: 20vh;
         grid-column-gap: 1em;
         grid-row-gap: 2em;
+        margin-bottom: 2em;
     }
     .memory-card {
         width: 100%;
@@ -168,4 +169,10 @@ h1 {
 
 .front-face {
     transform: rotateY(180deg);
+}
+
+#footer-text {
+    font-family: marvelFont;
+    color: white;
+    font-size: 1rem;
 }
