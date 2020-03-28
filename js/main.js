@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    const baseURL = "http://gateway.marvel.com/v1/public/characters?"
+    const baseURL = "https://gateway.marvel.com/v1/public/characters?"
     const apikey = "&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2"
 
     $.getJSON(baseURL + apikey, function(data) {
