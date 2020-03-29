@@ -8,39 +8,39 @@ $(document).ready(function() {
         let footer = document.getElementById('footer-text');
         footer.innerText = data.attributionText.toUpperCase();
     });
-    class audioControl {
-        constructor() {
-            this.bgMusic = new Audio('assets/sounds/backgroundMusic.mp3');
-            this.flipSound = new Audio('assets/sounds/card-flip.wav');
-            this.matchedSound = new Audio('assets/sounds/matchedSound.wav');
-            this.victory = new Audio('assets/sounds/badass-victory.wav');
-        }
-        startMusic() {
-            this.bgMusic.currentTime = 0;
-            this.bgMusic.play();
-        }
+    // // class audioControl {
+    //     constructor() {
+    //         // this.bgMusic = new Audio('assets/sounds/backgroundMusic.mp3');
+    //         // this.flipSound = new Audio('assets/sounds/card-flip.wav');
+    //         // this.matchedSound = new Audio('assets/sounds/matchedSound.wav');
+    //         // this.victory = new Audio('assets/sounds/badass-victory.wav');
+    //     }
+    //     startMusic() {
+    //         this.bgMusic.currentTime = 0;
+    //         this.bgMusic.play();
+    //     }
 
-        stopMusic() {
-            this.bgMusic.pause();
+    //     stopMusic() {
+    //         this.bgMusic.pause();
 
-        }
+    //     }
 
-        flip() {
-            this.flipSound.play();
-        }
+    //     flip() {
+    //         this.flipSound.play();
+    //     }
 
-        match() {
-            this.matchedSound.play();
-        }
+    //     match() {
+    //         this.matchedSound.play();
+    //     }
 
-        victorySound() {
-            this.victory.play();
-        }
-    }
+    //     victorySound() {
+    //         this.victory.play();
+    //     }
+    // }
 
 
     //timer and flip count
-    let audio = new audioControl;
+    // // let audio = new audioControl;
     let timer;
     let resetCounter;
     let matchedCards = [];
@@ -55,7 +55,7 @@ $(document).ready(function() {
 
             if (countDown === 0) {
                 clearInterval(resetCounter);
-                audio.stopMusic();
+                // audio.stopMusic();
                 matchedCards = [];
                 timeUp();
             }
@@ -63,7 +63,7 @@ $(document).ready(function() {
 
         function timeUp() {
             setTimeout(function() {
-                audio.victorySound();
+                // audio.victorySound();
                 $('.memory-card').removeClass('flip');
                 $('.memory-card').removeClass('matched');
                 $('#game-over-text').addClass('visible');
@@ -91,7 +91,7 @@ $(document).ready(function() {
     // Click to start overlay
     $('.overlay-text').click(function() {
         $('.overlay-text').removeClass('visible');
-        audio.startMusic();
+        // audio.startMusic();
         startTimer();
     });
 
@@ -124,7 +124,7 @@ $(document).ready(function() {
         if (this === fistCard) return;
 
         $(this.classList.toggle('flip'));
-        audio.flip();
+        // audio.flip();
 
         if (!isCardFlipped) {
             //first click
@@ -160,7 +160,7 @@ $(document).ready(function() {
         //console.log(fistCard.classList);
         fistCard.classList.add('matched');
         secondCard.classList.add('matched');
-        audio.match();
+        // audio.match();
         matchedCards.push(fistCard);
         matchedCards.push(secondCard);
 
@@ -174,9 +174,9 @@ $(document).ready(function() {
             clearInterval(resetCounter);
             matchedCards.length = 0;
             matches = 0;
-            audio.stopMusic();
+            // audio.stopMusic();
             setTimeout(function() {
-                audio.victorySound();
+                // audio.victorySound();
                 $('.memory-card').removeClass('flip');
                 $('#you-won-text').addClass('visible');
                 $('.memory-card').removeClass('matched');
