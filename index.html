@@ -2,12 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/style.css">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/style.css" />
     <title>Marvel Memory Game</title>
 </head>
 
@@ -20,21 +19,21 @@
         <!-- game overlays -->
         <!--add class visible to overlay-text -->
         <div class="overlay-text visible" id="start-overlay">
-            CLICK TO START!
+            <p class="start-text">CLICK TO START!</p>
         </div>
         <div id="game-over-text" class="overlay-text">
-            GAME OVER! <span>CLICK TO RESTART</span>
+            <p class="end-text">GAME OVER!</p><span>CLICK TO RESTART</span>
         </div>
         <div id="you-won-text" class="overlay-text">
-            YOU WON!<span>CLICK TO RESTART</span>
+            <p class="win-text">YOU WON!</p><span>CLICK TO RESTART</span>
         </div>
 
         <div class="game-info-container">
             <div class="game-info">
-                TIME:<span id="time-remaining"></span>
+                <p>TIME:<span id="time-remaining"></span></p>
             </div>
             <div class="game-info">
-                PAIRS:<span id="pairs">0</span>
+                <p>PAIRS:<span id="pairs">0</span></p>
             </div>
         </div>
 
@@ -42,68 +41,68 @@
         <div class="memory-game container-fluid">
 
             <div class="memory-card" data-image="hulk">
-                <img class="front-face matched" src="assets/images/hulk.jpg" alt="hulk image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face matched" src="assets/images/hulk.jpg" alt="hulk image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="thor">
-                <img class="front-face" src="assets/images/thor.jpg" alt="thor image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/thor.jpg" alt="thor image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="thor">
-                <img class="front-face" src="assets/images/thor.jpg" alt="thor image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/thor.jpg" alt="thor image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="hulk">
-                <img class="front-face" src="assets/images/hulk.jpg" alt="hulk image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/hulk.jpg" alt="hulk image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="iron man">
-                <img class="front-face" src="assets/images/iron-man.jpg" alt="iron man image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/iron-man.jpg" alt="iron man image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="iron man">
-                <img class="front-face" src="assets/images/iron-man.jpg" alt="iron man image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/iron-man.jpg" alt="iron man image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="lizard">
-                <img class="front-face" src="assets/images/lizard.jpg" alt="lizard image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/lizard.jpg" alt="lizard image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="lizard">
-                <img class="front-face" src="assets/images/lizard.jpg" alt="lizard image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/lizard.jpg" alt="lizard image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="dr doom">
-                <img class="front-face" src="assets/images/dr-doom.jpg" alt="dr doom image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/dr-doom.jpg" alt="dr doom image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="dr doom">
-                <img class="front-face" src="assets/images/dr-doom.jpg" alt="dr doom image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/dr-doom.jpg" alt="dr doom image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="captain britain">
-                <img class="front-face" src="assets/images/captain-britain.jpg" alt="captain britain image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/captain-britain.jpg" alt="captain britain image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="captain britain">
-                <img class="front-face" src="assets/images/captain-britain.jpg" alt="captain britain image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/captain-britain.jpg" alt="captain britain image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="wolverine">
-                <img class="front-face" src="assets/images/wolverine.jpg" alt="wolverine image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/wolverine.jpg" alt="wolverine image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="wolverine">
-                <img class="front-face" src="assets/images/wolverine.jpg" alt="wolverine image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/wolverine.jpg" alt="wolverine image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="deadpool">
-                <img class="front-face" src="assets/images/deadpool.jpg" alt="deadpool image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/deadpool.jpg" alt="deadpool image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
             <div class="memory-card" data-image="deadpool">
-                <img class="front-face" src="assets/images/deadpool.jpg" alt="deadpool image">
-                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo">
+                <img class="front-face" src="assets/images/deadpool.jpg" alt="deadpool image" />
+                <img class="back-face" src="assets/images/marvel-logo.png" alt="marvel-logo" />
             </div>
 
         </div>
