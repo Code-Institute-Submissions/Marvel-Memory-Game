@@ -136,16 +136,16 @@ $(document).ready(function() {
     }
 
     function checkForMatch() {
-        //ternary operator 
-        // let doMatch = fistCard.dataset.image === secondCard.dataset.image;
+        //  ternary operator 
+        let doMatch = fistCard.dataset.image === secondCard.dataset.image;
 
-        // doMatch ? disableCards() : unflipCards();
-        if (fistCard.dataset.image === secondCard.dataset.image) {
-            disableCards();
-        } else {
-            //does not match. Timeout used to view 2nd card
-            unflipCards();
-        }
+        doMatch ? disableCards() : unflipCards();
+        // if (fistCard.dataset.image === secondCard.dataset.image) {
+        //     disableCards();
+        // } else {
+        //     //does not match. Timeout used to view 2nd card
+        //     unflipCards();
+        // }
     }
 
 
