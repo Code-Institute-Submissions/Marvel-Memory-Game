@@ -1,9 +1,10 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 @font-face {
@@ -13,7 +14,7 @@
 
 @font-face {
     font-family: comicFont;
-    src: url('fonts/comicFont.ttf');
+    src: url('fonts/comicFont.ttf') format('truetype');
 }
 
 body {
@@ -23,20 +24,17 @@ body {
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     height: 100vh;
     background-image: url('images/ironman-gb-image.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
 }
 
 .wrapper {
@@ -45,9 +43,8 @@ body {
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.6)));
     background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -55,6 +52,11 @@ h1 {
     color: red;
     font-size: 4em;
     letter-spacing: 0.2rem;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0rem;
 }
 
 .game-info-container {
@@ -78,24 +80,24 @@ h1 {
     bottom: 0;
     text-align: center;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     z-index: 100;
 }
 
 .overlay-text.visible {
     -webkit-animation: overlay-grow 500ms forwards;
-            animation: overlay-grow 500ms forwards;
+    animation: overlay-grow 500ms forwards;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
 }
 
 .overlay-text span {
@@ -134,22 +136,22 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 1em;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     -webkit-perspective: 1000px;
-            perspective: 1000px;
+    perspective: 1000px;
 }
 
 .memory-card {
     position: relative;
     width: 100%;
     height: 100%;
-    /* background-color: rgb(233, 33, 33); */
+    background-color: rgb(233, 33, 33);
     border-radius: 5px;
     -webkit-transform: scale(1);
-        -ms-transform: scale(1);
-            transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
     -webkit-transform-style: preserve-3d;
-            transform-style: preserve-3d;
+    transform-style: preserve-3d;
     -webkit-transition: -webkit-transform .75s;
     transition: -webkit-transform .75s;
     -o-transition: transform .75s;
@@ -179,16 +181,13 @@ h1 {
     .memory-card {
         width: 100%;
         height: 100%;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
     }
 }
 
 .memory-card:active {
     -webkit-transform: scale(.97);
-        -ms-transform: scale(.97);
-            transform: scale(.97);
+    -ms-transform: scale(.97);
+    transform: scale(.97);
     -webkit-transition: -webkit-transform .2s ease-out;
     transition: -webkit-transform .2s ease-out;
     -o-transition: transform .2s ease-out;
@@ -198,33 +197,31 @@ h1 {
 
 .memory-card.flip {
     -webkit-transform: rotateY(180deg);
-            transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 .memory-card.flip.matched {
-    /* background-image: linear-gradient(45deg, black, white); */
-    -webkit-animation: match-animation 1.5s infinite alternate;
-            animation: match-animation 1.5s infinite alternate;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+    background-image: -o-linear-gradient(45deg, black, white);
+    background-image: linear-gradient(45deg, black, white);
+    -webkit-animation: match-animation 1s infinite alternate;
+    animation: match-animation 1s infinite alternate;
 }
 
 @-webkit-keyframes match-animation {
     0% {
-        background-position: left;
+        background-position: top;
     }
     100% {
-        background-position: right;
+        background-position: bottom;
     }
 }
 
 @keyframes match-animation {
     0% {
-        background-position: left;
+        background-position: top;
     }
     100% {
-        background-position: right;
+        background-position: bottom;
     }
 }
 
@@ -232,20 +229,17 @@ h1 {
 .back-face {
     height: 100%;
     width: 100%;
-    /* padding: 5px; */
+    padding: 5px;
     border-radius: 5px;
     position: absolute;
     border: 1px solid black;
     -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+    backface-visibility: hidden;
 }
 
 .front-face {
     -webkit-transform: rotateY(180deg);
-            transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 #footer-text {
