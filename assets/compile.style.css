@@ -202,6 +202,9 @@ p {
 .memory-card.flip {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 .memory-card.flip.matched {
