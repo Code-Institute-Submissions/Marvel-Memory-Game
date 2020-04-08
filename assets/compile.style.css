@@ -235,6 +235,9 @@ p {
     border: 1px solid black;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 .front-face {
