@@ -2,7 +2,7 @@
  
 To play the game please click on the following link https://nickbell123.github.io/Marvel-Memory-Game/ . 
  
-The game has been created for pleasure and entertainment for all ages. Using images pulled from Marvel API, the game allows 'players/    Marvel fans' match two cards of the same character image making a pair. the aim is to complete before the timer reaches 0.
+The game has been created for pleasure and entertainment for all ages. Using images pulled from Marvel API, the game allows 'players/    Marvel fans' match two cards of the same character image making a pair. the aim is to complete before the timer reaches zero.
  
 ## UX
 
@@ -24,7 +24,8 @@ The game has been designed to be as intutive and user friendly as possible with 
 * The game is designed to be as intuitive as possible, form using a classic game method to simple prompts in the game the user should     intuitivly know/ understand' the aim and the proceedure.
 * Oringinal images form Marvel Api.
 * Retro sound effects on game start, card flip, card match and game over.
-* count down timer and pairs counter.
+* Count down timer and pairs counter.
+* Mute sound fx button
 
 ### Future Features
 
@@ -44,6 +45,40 @@ The game has been built using HTML, CSS and Javascript. For responsive layout on
 2. Responsivness of the game was tested using various devices of diffrent screen sizes. Iphone X, Ipad, laptop & desktop all tested.
 3. Multiple browser testing using Brave, IE, Firefox and Safari.
 4. Tested game with friend and family for ease of use and simplicity.
+
+## Bugs
+
+The main issue was on IOS devices the images would not flip to display the 'backface' of the card. The issue was resolved after parsing the CSS through Autoprefixer and adding correct vendor prefixes.
+
+## Deployment
+
+This site was developed using VScode IDE. All changes to the code were then added and committed to the local repository. The commits were then pushed to my GitHub repository and the project deployed using GtiHub pages as follows;
+
+Step 1: Go to the settings tab of the repo, scrolled down to GitHub Pages
+
+Step 2: Under GitHub Pages -> Source is a scrolldown box titled None. Click it and you can select a source.
+
+Step 3: Click master branch
+
+Step 4: You will be automatically taken to the top of the page where in a light blue bar will be stated "Github Pages source saved".
+
+Step 5: You then scroll down to GitHub Pages where will be stated "Your site is ready to be published at "<https://nickbell123.github.io/Marvel-Memory-Game/">
+
+Step 6: Click on the url and you will be auto-referred to the published webpage.
+
+Step 7: When returning to the github repository settings, scroll down to GitHub Pages and you will see a light green block stating "Your site is published at <https://...">
+
+## The repository can be found on:
+
+<https://github.com/NickBell123/Marvel-Memory-Game/> and the game has been deployed using Github pages here [Marvel Memory Game](https://nickbell123.github.io/Marvel-Memory-Game/).
+
+## Credits & Acknowledgement
+
+[Marvels Dev Portal](https://developer.marvel.com/) for their resource. 
+
+And special thank you to Anthony Ngene, mentor.
+
+
 
 
 
