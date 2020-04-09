@@ -48,15 +48,21 @@ $(document).ready(function() {
             startBgSound();
         }
         console.log(sound);
+        console.log({ soundToggler });
     })
 
     function stopBgSound() {
         sound = false
+        $('#soundToggler').addClass('soundOff')
+        $('#soundToggler').removeClass('soundOn')
         audio.stopMusic();
+
     }
 
     function startBgSound() {
         sound = true
+        $('#soundToggler').addClass('soundOn')
+        $('#soundToggler').removeClass('soundOff')
         audio.startMusic();
     }
     //timer

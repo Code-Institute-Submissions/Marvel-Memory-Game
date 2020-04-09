@@ -57,6 +57,25 @@ h1 {
     letter-spacing: 0.2rem;
 }
 
+#soundToggler {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 3rem;
+    width: 3rem;
+    border: solid 1px red;
+    border-radius: 1rem;
+    background-color: red;
+    background-position: center;
+}
+
+.soundOn {
+    background-image: url('images/unmute_icon.png');
+}
+
+.soundOff {
+    background-image: url('images/mute_icon.png');
+}
+
 .game-info-container {
     text-align: center;
     color: red;
@@ -67,12 +86,6 @@ h1 {
 .game-info-container span {
     font-family: comicFont;
     font-size: 1em;
-}
-
-#soundToggler {
-    background-image: url('images/toggle-on.png');
-    height: 1rem;
-    width: 1rem;
 }
 
 .overlay-text {
