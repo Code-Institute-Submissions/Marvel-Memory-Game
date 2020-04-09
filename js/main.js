@@ -1,13 +1,7 @@
 $(document).ready(function() {
 
-    const baseURL = "https://gateway.marvel.com/v1/public/characters?"
-    const apikey = "&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2"
 
-    $.getJSON(baseURL + apikey, function(data) {
-        console.log(data.attributionText);
-        let footer = document.getElementById('footer-text');
-        footer.innerText = data.attributionText.toUpperCase();
-    });
+
     class audioControl {
         constructor() {
             this.bgMusic = new Audio('assets/sounds/backgroundMusic.mp3');
@@ -22,7 +16,6 @@ $(document).ready(function() {
 
         stopMusic() {
             this.bgMusic.pause();
-
         }
 
         flip() {
@@ -39,13 +32,34 @@ $(document).ready(function() {
     }
 
 
-    //timer and flip count
+
     let audio = new audioControl;
     let timer;
     let resetCounter;
     let matchedCards = [];
-    console.log($('#time-remaining').html());
+    let sound = true;
 
+    //background music toggler
+    $('#soundToggler').click(() => {
+        if (sound) {
+            stopBgSound();
+
+        } else {
+            startBgSound();
+        }
+        console.log(sound);
+    })
+
+    function stopBgSound() {
+        sound = false
+        audio.stopMusic();
+    }
+
+    function startBgSound() {
+        sound = true
+        audio.startMusic();
+    }
+    //timer
     function startTimer() {
         timer = 60;
 
@@ -73,15 +87,10 @@ $(document).ready(function() {
                 $('#game-over-text').remove('visible');
                 shuffleCards();
                 $('#pairs').html(0);
-
-
-
             })
         }
     }
 
-    //console.log();
-    //select all cards
     const cards = document.querySelectorAll('.memory-card');
 
     // Click to start overlay
@@ -165,7 +174,7 @@ $(document).ready(function() {
         $('#pairs').html(matches);
 
 
-
+        //flip count
         if (matchedCards.length === 16) {
             clearInterval(resetCounter);
             matchedCards.length = 0;
@@ -210,3 +219,17 @@ $(document).ready(function() {
 
     }
 });
+
+function copyRite() {
+
+
+    const baseURL = "https://gateway.marvel.com/v1/public/characters?"
+    const apikey = "&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2"
+
+    $.getJSON(baseURL + apikey, function(data) {
+        console.log(data.attributionText);
+        let footer = document.getElementById('footer-text');
+        footer.innerText = data.attributionText.toUpperCase();
+    });
+}
+copyRite();
