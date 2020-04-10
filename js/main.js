@@ -61,7 +61,7 @@ $(document).ready(function() {
     }
     //timer
     function startTimer() {
-        timer = 50;
+        timer = 60;
         resetCounter = setInterval(() => {
             let countDown = timer--;
             $('#time-remaining').html(countDown);

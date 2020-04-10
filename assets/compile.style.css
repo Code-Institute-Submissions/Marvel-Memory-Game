@@ -96,6 +96,11 @@ h1 {
     font-size: 1em;
 }
 
+.btn {
+    font-size: 3rem;
+    color: red;
+}
+
 .overlay-text {
     display: none;
     position: fixed;
