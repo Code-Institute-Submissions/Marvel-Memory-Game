@@ -47,8 +47,8 @@ $(document).ready(function() {
         } else {
             startBgSound();
         }
-        console.log(sound);
-        console.log({ soundToggler });
+        // console.log(sound);
+        // console.log({ soundToggler });
     })
 
     function stopBgSound() {
@@ -91,6 +91,9 @@ $(document).ready(function() {
 
             $('#game-over-text').click(() => {
                 $('#game-over-text').remove('visible');
+                sound = true
+                $('#soundToggler').addClass('soundOn')
+                $('#soundToggler').removeClass('soundOff')
                 shuffleCards();
                 $('#pairs').html(0);
             })
@@ -192,7 +195,9 @@ $(document).ready(function() {
                 $('#you-won-text').addClass('visible');
                 $('.memory-card').removeClass('matched');
                 $('#you-won-text').click(function() {
-
+                    sound = true
+                    $('#soundToggler').addClass('soundOn')
+                    $('#soundToggler').removeClass('soundOff')
                     shuffleCards();
                     $('#pairs').html(0);
                     matchedCards = [];
@@ -221,8 +226,6 @@ $(document).ready(function() {
         lockCards = false;
         fistCard = null;
         secondCard = null;
-
-
     }
 });
 
