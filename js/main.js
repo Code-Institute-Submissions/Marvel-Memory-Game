@@ -1,7 +1,4 @@
 $(document).ready(function() {
-
-
-
     class audioControl {
         constructor() {
             this.bgMusic = new Audio('assets/sounds/backgroundMusic.mp3');
@@ -31,8 +28,6 @@ $(document).ready(function() {
         }
     }
 
-
-
     let audio = new audioControl;
     let timer;
     let resetCounter;
@@ -56,7 +51,6 @@ $(document).ready(function() {
         $('#soundToggler').addClass('soundOff')
         $('#soundToggler').removeClass('soundOn')
         audio.stopMusic();
-
     }
 
     function startBgSound() {
@@ -67,17 +61,16 @@ $(document).ready(function() {
     }
     //timer
     function startTimer() {
-        timer = 60;
-
+        timer = 50;
         resetCounter = setInterval(() => {
             let countDown = timer--;
             $('#time-remaining').html(countDown);
-
             if (countDown === 0) {
                 clearInterval(resetCounter);
                 audio.stopMusic();
                 matchedCards = [];
                 timeUp();
+                $('#time-remaining').html('0');
             }
         }, 1000);
 
@@ -88,23 +81,23 @@ $(document).ready(function() {
                 $('.memory-card').removeClass('matched');
                 $('#game-over-text').addClass('visible');
             }, 1000)
-
             $('#game-over-text').click(() => {
-                $('#game-over-text').remove('visible');
                 sound = true
+                $('#game-over-text').removeClass('visible');
                 $('#soundToggler').addClass('soundOn')
                 $('#soundToggler').removeClass('soundOff')
-                shuffleCards();
                 $('#pairs').html(0);
+                clearInterval(resetCounter);
+                shuffleCards();
+                audio.startMusic();
+                startTimer();
             })
         }
     }
-
     const cards = document.querySelectorAll('.memory-card');
-
     // Click to start overlay
-    $('.overlay-text').click(function() {
-        $('.overlay-text').removeClass('visible');
+    $('#start-overlay').click(function() {
+        $('#start-overlay').removeClass('visible');
         audio.startMusic();
         startTimer();
     });
@@ -112,14 +105,10 @@ $(document).ready(function() {
     function shuffleCards() {
         // shuffle using flex order value
         cards.forEach(function(card) {
-
             let shufflePos = Math.floor(Math.random() * 16);
             card.style.order = shufflePos;
-
             cards.forEach(function(card) {
-                card.addEventListener('click', flipCard, function() {
-
-                });
+                card.addEventListener('click', flipCard, function() {});
             });
         });
     }
@@ -133,7 +122,6 @@ $(document).ready(function() {
 
     // Flip card with a click
     function flipCard() {
-
         if (lockCards) return;
         if (this === fistCard) return;
 
@@ -156,7 +144,6 @@ $(document).ready(function() {
     function checkForMatch() {
         //  ternary operator 
         let doMatch = fistCard.dataset.image === secondCard.dataset.image;
-
         doMatch ? disableCards() : unflipCards();
         // if (fistCard.dataset.image === secondCard.dataset.image) {
         //     disableCards();
@@ -165,8 +152,6 @@ $(document).ready(function() {
         //     unflipCards();
         // }
     }
-
-
 
     function disableCards() {
         fistCard.removeEventListener('click', flipCard);
@@ -183,14 +168,13 @@ $(document).ready(function() {
         $('#pairs').html(matches);
 
 
-        //flip count
         if (matchedCards.length === 16) {
             clearInterval(resetCounter);
             matchedCards.length = 0;
             matches = 0;
             audio.stopMusic();
+            audio.victorySound();
             setTimeout(function() {
-                audio.victorySound();
                 $('.memory-card').removeClass('flip');
                 $('#you-won-text').addClass('visible');
                 $('.memory-card').removeClass('matched');
@@ -212,11 +196,9 @@ $(document).ready(function() {
 
     function unflipCards() {
         lockCards = true;
-
         setTimeout(function() {
             fistCard.classList.remove('flip');
             secondCard.classList.remove('flip');
-
             resetGame();
         }, 1500);
     }
@@ -229,16 +211,35 @@ $(document).ready(function() {
     }
 });
 
-function copyRite() {
+$('#prizeBtn').click(function() {
+    $('#you-won-text').removeClass('visible');
+    $('#prize-overlay').addClass('visible');
 
+})
 
+$('#closePrize').click(function() {
+    $('#prize-overlay').removeClass('visible');
+    $('#start-overlay').addClass('visible');
+
+})
+
+function getData() {
     const baseURL = "https://gateway.marvel.com/v1/public/characters?"
-    const apikey = "&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2"
+        // const apikey = "&limit=100&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2"
+    let offSet = (Math.floor(Math.random() * 15)) * 10;
+    let apikey = `&limit=100&offset=${offSet}&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2`
 
     $.getJSON(baseURL + apikey, function(data) {
-        console.log(data.attributionText);
-        let footer = document.getElementById('footer-text');
-        footer.innerText = data.attributionText.toUpperCase();
+        $('#footer-text').html(data.attributionText.toUpperCase());
+        console.log(data);
+        let prizeNum = Math.floor(Math.random() * 101);
+        prizeCharacter = (data.data.results[prizeNum]);
+        console.log(prizeCharacter.name);
+        $('.prize-text').html(prizeCharacter.name.toUpperCase());
+        $('.prize-content').html(`<img src="${prizeCharacter.thumbnail.path}/portrait_fantastic.${prizeCharacter.thumbnail.extension}"></img>`);
+        $('#prizeBio').html(`<a href="${prizeCharacter.resourceURI}"></a>`);
     });
 }
-copyRite();
+
+
+getData();

@@ -14,18 +14,30 @@
     <div class="wrapper">
         <header>
             <h1>MARVEL MEMORY GAME<button type="button" class="btn soundOn" id="soundToggler"></button></h1>
+
         </header>
 
         <!-- game overlays -->
         <!--add class visible to overlay-text -->
         <div class="overlay-text visible" id="start-overlay">
-            <p class="start-text"><span>FIND THE MATCHING PAIRS<br></span>CLICK TO START!</p>
+            <p class="start-text">FIND THE MATCHING PAIRS<br></p><span>CLICK TO START!</span>
         </div>
         <div id="game-over-text" class="overlay-text">
             <p class="end-text">GAME OVER!</p><span>CLICK TO RESTART</span>
         </div>
         <div id="you-won-text" class="overlay-text">
-            <p class="win-text">YOU WON!</p><span>CLICK TO RESTART</span>
+            <p class="win-text">YOU WON!</p><span>
+            <button type="button" class="btn" id="prizeBtn">VIEW YOUR PRIZE
+            </button></span>
+        </div>
+
+        <!-- Prize overlay -->
+
+        <div class="overlay-text" id="prize-overlay">
+            <p class="prize-text">hi</p>
+            <div class="prize-content"></div>
+            <div class="prize-bio"></div>
+            <button type="button" class="btn" id="closePrize">RESTART</button>
         </div>
 
         <div class="game-info-container">
@@ -109,6 +121,9 @@
     </div>
     <script src="js/jQuery-v3.4.1.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -73,6 +73,7 @@ h1 {
     background-color: red;
     background-position: center;
     margin-left: 2rem;
+    margin-bottom: 1rem;
 }
 
 .soundOn {
@@ -149,6 +150,10 @@ h1 {
         background-color: rgba(0, 0, 0, 0.75);
         font-size: 9em;
     }
+}
+
+.modal-backdrop.show {
+    opacity: -0.5;
 }
 
 .memory-game {
@@ -282,4 +287,17 @@ h1 {
 #footer-text {
     color: white;
     font-size: 2rem;
+}
+
+#prizeBio {
+    font-size: 1rem;
+}
+
+
+/* .modal-dialog-centered {
+    display: flex;
+} */
+
+.modal-dialog-centered.close {
+    display: none;
 }
