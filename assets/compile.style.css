@@ -151,8 +151,8 @@ a:hover {
     flex-direction: column;
 }
 
-.overlay-text span {
-    font-size: .3em;
+.overlay-text p {
+    font-size: 5rem;
 }
 
 @-webkit-keyframes overlay-grow {
@@ -308,9 +308,9 @@ a:hover {
 
 #footer-text {
     color: white;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
-#prizeBio {
-    font-size: 1rem;
+.prize-bio {
+    font-size: 1.25rem;
 }
