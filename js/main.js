@@ -97,6 +97,7 @@ $(document).ready(function() {
     const cards = document.querySelectorAll('.memory-card');
     // Click to start overlay
     $('#start-overlay').click(function() {
+        getData();
         $('#start-overlay').removeClass('visible');
         audio.startMusic();
         startTimer();
@@ -178,6 +179,7 @@ $(document).ready(function() {
                 $('.memory-card').removeClass('flip');
                 $('#you-won-text').addClass('visible');
                 audio.victorySound();
+
                 $('.memory-card').removeClass('matched');
                 $('#you-won-text').click(function() {
                     sound = true
@@ -234,11 +236,8 @@ function getData() {
         $('#footer-text').html(data.attributionText.toUpperCase());
         console.log(data);
         let prizeList = data.data.results;
-
-
-
         for (prize of prizeList) {
-            if (prize.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || prize.thumbnail.extensio === "gif") {
+            if (prize.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || prize.thumbnail.extension === "gif") {
                 continue;
             } else {
                 prizeCharacters.push(prize);
@@ -251,7 +250,7 @@ function getData() {
         console.log(prizeCharacter.name);
         $('.prize-text').html(prizeCharacter.name.toUpperCase());
         $('.prize-content').html(`<img src="${prizeCharacter.thumbnail.path}/portrait_fantastic.${prizeCharacter.thumbnail.extension}"></img>`);
-        $('.prize-bio').html(`<a target="_blank" href="${prizeCharacter.urls[0].url}">click here to GO TO MARVEL.com for more</a>`);
+        $('.prize-bio').html(`<a target="_blank" href="${prizeCharacter.urls[0].url}">click here to GO TO MARVEL.com for more on ${prizeCharacter.name} or...</a>`);
         console.log(prizeCharacter.thumbnail.path);
     });
 }
