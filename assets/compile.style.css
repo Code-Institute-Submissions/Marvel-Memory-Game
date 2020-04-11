@@ -6,6 +6,10 @@
     -webkit-box-sizing: border-box;
 }
 
+p {
+    margin: 0;
+}
+
 @font-face {
     font-family: marvelFont;
     src: url('fonts/Marvel.ttf') format('truetype');
@@ -88,7 +92,7 @@ h1 {
     text-align: center;
     color: red;
     font-size: 2.5em;
-    line-height: 1rem;
+    line-height: 2rem;
 }
 
 .game-info-container span {
@@ -247,7 +251,7 @@ a:hover {
         -webkit-box-sizing: border-box;
     }
     .overlay-text p {
-        font-size: 4rem;
+        font-size: 3.5rem;
     }
     #footer-text {
         font-size: 1rem;
