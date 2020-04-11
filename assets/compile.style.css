@@ -101,6 +101,26 @@ h1 {
     color: red;
 }
 
+.btn:hover {
+    color: whitesmoke;
+    cursor: url(images/spider-hand.cur), default;
+}
+
+a {
+    font-family: comicFont;
+    color: red;
+    text-decoration: none;
+    background-color: transparent;
+    font-size: 2rem;
+    cursor: url(images/spider-hand.cur), default;
+}
+
+a:hover {
+    color: whitesmoke;
+    text-decoration: none;
+    background-color: transparent;
+}
+
 .overlay-text {
     display: none;
     position: fixed;
@@ -157,10 +177,6 @@ h1 {
     }
 }
 
-.modal-backdrop.show {
-    opacity: -0.5;
-}
-
 .memory-game {
     height: 75vh;
     width: 65vh;
@@ -174,6 +190,7 @@ h1 {
     flex-wrap: wrap;
     -webkit-perspective: 1000px;
     perspective: 1000px;
+    cursor: url(images/spider-hand.cur), default;
 }
 
 .memory-card {
@@ -296,13 +313,4 @@ h1 {
 
 #prizeBio {
     font-size: 1rem;
-}
-
-
-/* .modal-dialog-centered {
-    display: flex;
-} */
-
-.modal-dialog-centered.close {
-    display: none;
 }
