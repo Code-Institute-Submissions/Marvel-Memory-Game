@@ -104,6 +104,7 @@ h1 {
     font-family: comicFont;
     font-size: 2.5rem;
     color: red;
+    margin-top: 1rem;
 }
 
 .btn:hover {
@@ -325,5 +326,5 @@ a:hover {
 }
 
 .prize-bio {
-    line-height: 1rem;
+    line-height: 2rem;
 }
