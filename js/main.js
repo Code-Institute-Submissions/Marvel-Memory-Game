@@ -112,7 +112,7 @@ $(document).ready(function() {
             let shufflePos = Math.floor(Math.random() * 16);
             card.style.order = shufflePos;
             cards.forEach(function(card) {
-                card.addEventListener('click', flipCard, function() {});
+                card.addEventListener('click', flipCard);
             });
         });
     }
@@ -215,46 +215,46 @@ $(document).ready(function() {
         fistCard = null;
         secondCard = null;
     }
-});
 
-$('#prizeBtn').click(function() {
-    $('#you-won-text').removeClass('visible');
-    $('#prize-overlay').addClass('visible');
+    $('#prizeBtn').click(function() {
+        $('#you-won-text').removeClass('visible');
+        $('#prize-overlay').addClass('visible');
 
-})
+    })
 
-$('#closePrize').click(function() {
-    $('#prize-overlay').removeClass('visible');
-    $('#start-overlay').addClass('visible');
+    $('#closePrize').click(function() {
+        $('#prize-overlay').removeClass('visible');
+        $('#start-overlay').addClass('visible');
 
-})
+    })
 
-function getData() {
-    const baseURL = "https://gateway.marvel.com/v1/public/characters?"
-        // const apikey = "&limit=100&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2"
-    let offSet = (Math.floor(Math.random() * 15)) * 100;
-    let apikey = `&limit=100&offset=${offSet}&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2`
-    let prizeCharacters = [];
-    $.getJSON(baseURL + apikey, function(data) {
-        $('#footer-text').html(data.attributionText.toUpperCase());
-        console.log(data);
-        let prizeList = data.data.results;
-        for (prize of prizeList) {
-            if (prize.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || prize.thumbnail.extension === "gif") {
-                continue;
-            } else {
-                prizeCharacters.push(prize);
+    function getData() {
+        const baseURL = "https://gateway.marvel.com/v1/public/characters?"
+            // const apikey = "&limit=100&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2"
+        let offSet = (Math.floor(Math.random() * 15)) * 100;
+        let apikey = `&limit=100&offset=${offSet}&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2`
+        let prizeCharacters = [];
+        $.getJSON(baseURL + apikey, function(data) {
+            $('#footer-text').html(data.attributionText.toUpperCase());
+            console.log(data);
+            let prizeList = data.data.results;
+            for (prize of prizeList) {
+                if (prize.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || prize.thumbnail.extension === "gif") {
+                    continue;
+                } else {
+                    prizeCharacters.push(prize);
+                }
             }
-        }
-        console.log(prizeCharacters);
+            console.log(prizeCharacters);
 
-        let prizeNum = Math.floor(Math.random() * prizeCharacters.length + 1);
-        prizeCharacter = (prizeCharacters[prizeNum]);
-        console.log(prizeCharacter.name);
-        $('.prize-text').html(prizeCharacter.name.toUpperCase());
-        $('.prize-content').html(`<img src="${prizeCharacter.thumbnail.path}/portrait_fantastic.${prizeCharacter.thumbnail.extension}"></img>`);
-        $('.prize-bio').html(`<a target="_blank" href="${prizeCharacter.urls[0].url}">click <span>here</span> to GO TO MARVEL.com for more on ${prizeCharacter.name} or...</a>`);
-        console.log(prizeCharacter.thumbnail.path);
-    });
-}
-getData();
+            let prizeNum = Math.floor(Math.random() * prizeCharacters.length + 1);
+            prizeCharacter = (prizeCharacters[prizeNum]);
+            console.log(prizeCharacter.name);
+            $('.prize-text').html(prizeCharacter.name.toUpperCase());
+            $('.prize-content').html(`<img src="${prizeCharacter.thumbnail.path}/portrait_fantastic.${prizeCharacter.thumbnail.extension}"></img>`);
+            $('.prize-bio').html(`<a target="_blank" href="${prizeCharacter.urls[0].url}">click <span>here</span> to GO TO MARVEL.com for more on ${prizeCharacter.name} or...</a>`);
+            console.log(prizeCharacter.thumbnail.path);
+        });
+    }
+    getData();
+});
