@@ -61,7 +61,7 @@ $(document).ready(function() {
     }
     //timer
     function startTimer() {
-        timer = 90;
+        timer = 61;
         resetCounter = setInterval(() => {
             timer--;
             let countDownMin = Math.floor(timer / 60);
