@@ -101,32 +101,32 @@ h1 {
 }
 
 .btn {
-    font-family: comicFont;
     font-size: 2.5rem;
     color: red;
     margin-top: 1rem;
 }
 
-.btn:hover {
-    transition: 0.3s;
-    color: whitesmoke;
-    cursor: url(images/spider-hand.cur), default;
-}
-
 a {
+    margin: 0;
     font-family: comicFont;
     color: red;
     text-decoration: none;
     background-color: transparent;
-    font-size: 2rem;
+    font-size: 2.5rem;
     cursor: url(images/spider-hand.cur), default;
 }
 
-a:hover {
+a span {
+    text-decoration: underline;
+}
+
+a:hover,
+.btn:hover {
     transition: 0.3s ease-in;
     color: whitesmoke;
     text-decoration: none;
-    background-color: transparent;
+    text-shadow: black 2px 2px 2px;
+    cursor: url(images/spider-hand.cur), default;
 }
 
 .overlay-text {
@@ -274,6 +274,8 @@ a:hover {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
     box-shadow: #af1616 -5px 5px 5px 0px;
+    transition: transform .2s ease-out;
+    transition: transform .2s ease-out, -webkit-transform .2s ease-out;
 }
 
 
@@ -327,4 +329,8 @@ a:hover {
 
 .prize-bio {
     line-height: 2rem;
+}
+
+footer {
+    font-family: comicFont;
 }

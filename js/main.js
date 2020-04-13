@@ -61,11 +61,14 @@ $(document).ready(function() {
     }
     //timer
     function startTimer() {
-        timer = 60;
+        timer = 90;
         resetCounter = setInterval(() => {
-            let countDown = timer--;
-            $('#time-remaining').html(countDown);
-            if (countDown === 0) {
+            timer--;
+            let countDownMin = Math.floor(timer / 60);
+            let countDownSec = timer % 60;
+            let countDownSecounds = countDownSec.toString().padStart(2, '0');
+            $('#time-remaining').html(`${countDownMin}:${countDownSecounds}`);
+            if (timer === 0) {
                 clearInterval(resetCounter);
                 audio.stopMusic();
                 matchedCards = [];
@@ -250,7 +253,7 @@ function getData() {
         console.log(prizeCharacter.name);
         $('.prize-text').html(prizeCharacter.name.toUpperCase());
         $('.prize-content').html(`<img src="${prizeCharacter.thumbnail.path}/portrait_fantastic.${prizeCharacter.thumbnail.extension}"></img>`);
-        $('.prize-bio').html(`<a target="_blank" href="${prizeCharacter.urls[0].url}">click here to GO TO MARVEL.com for more on ${prizeCharacter.name} or...</a>`);
+        $('.prize-bio').html(`<a target="_blank" href="${prizeCharacter.urls[0].url}">click <span>here</span> to GO TO MARVEL.com for more on ${prizeCharacter.name} or...</a>`);
         console.log(prizeCharacter.thumbnail.path);
     });
 }
