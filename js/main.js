@@ -78,7 +78,7 @@ $(document).ready(function() {
         }, 1000);
 
         function timeUp() {
-            setTimeout(function() {
+            setTimeout(() => {
                 audio.victorySound();
                 $('.memory-card').removeClass('flip');
                 $('.memory-card').removeClass('matched');
@@ -99,7 +99,7 @@ $(document).ready(function() {
     }
     const cards = document.querySelectorAll('.memory-card');
     // Click to start overlay
-    $('#start-overlay').click(function() {
+    $('#start-overlay').click(() => {
         getData();
         $('#start-overlay').removeClass('visible');
         audio.startMusic();
