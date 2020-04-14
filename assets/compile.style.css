@@ -185,7 +185,7 @@ a:hover,
         font-size: 0;
     }
     to {
-        background-color: rgba(0, 0, 0, 0.75);
+        background-color: rgba(0, 0, 0, 0.85);
         font-size: 9em;
     }
 }
