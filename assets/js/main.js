@@ -28,6 +28,60 @@ $(document).ready(function() {
         }
     }
 
+    let cardsList = [{
+            name: "thor",
+            img: "assets/images/thor.jpg"
+        },
+        {
+            name: "lizard",
+            img: "assets/images/lizard.jpg"
+        },
+        {
+            name: "dr doom",
+            img: "assets/images/dr-doom.jpg"
+        },
+        {
+            name: "lizard",
+            img: "assets/images/lizard.jpg"
+        }, {
+            name: "thor",
+            img: "assets/images/thor.jpg"
+        }, {
+            name: "dr doom",
+            img: "assets/images/dr-doom.jpg"
+        }, {
+            name: "captain-britain",
+            img: "assets/images/captain-britain.jpg"
+        }, {
+            name: "captain-britain",
+            img: "assets/images/captain-britain.jpg"
+        }, {
+            name: "deadpool",
+            img: "assets/images/deadpool.jpg"
+        }, {
+            name: "deadpool",
+            img: "assets/images/deadpool.jpg"
+        }, {
+            name: "hulk",
+            img: "assets/images/hulk.jpg"
+        }, {
+            name: "hulk",
+            img: "assets/images/hulk.jpg"
+        }, {
+            name: "iron-man",
+            img: "assets/images/iron-man.jpg"
+        }, {
+            name: "iron-man",
+            img: "assets/images/iron-man.jpg"
+        }, {
+            name: "wolverine",
+            img: "assets/images/wolverine.jpg"
+        }, {
+            name: "wolverine",
+            img: "assets/images/wolverine.jpg"
+        },
+    ]
+
     let audio = new audioControl;
     let timer;
     let resetCounter;
@@ -97,6 +151,20 @@ $(document).ready(function() {
             })
         }
     }
+
+    function getCards() {
+        let cardImages = cardsList;
+        cardImages.forEach((image) => {
+            const tiles = document.createElement('div');
+            $(tiles).addClass('memory-card').attr('data-image', image.name).html(`<img class="front-face" src="${image.img}" alt="${image.name} image" />
+            <img class="back-face" src="assets/images/marvel-logo2.png" alt="marvel-logo" />`);
+            console.log(image.name, tiles);
+            $('.memory-game').prepend(tiles);
+        })
+    }
+
+    getCards();
+
     const cards = document.querySelectorAll('.memory-card');
     // Click to start overlay
     $('#start-overlay').click(() => {
