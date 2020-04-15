@@ -6,8 +6,9 @@
     -webkit-box-sizing: border-box;
 }
 
-p {
+.game-info p {
     margin: 0;
+    text-shadow: black 2px 2px 2px;
 }
 
 @font-face {
@@ -65,6 +66,7 @@ h1 {
     font-size: 4em;
     letter-spacing: 0.2rem;
     margin-left: 1rem;
+    text-shadow: black 2px 2px 2px;
 }
 
 #soundToggler {
@@ -109,7 +111,7 @@ h1 {
     color: yellow;
     margin-top: 1rem;
     background-color: transparent;
-    border: solid 1px whitesmoke;
+    border: solid 1px yellow;
 }
 
 a {
@@ -134,6 +136,7 @@ a:hover,
     text-decoration: none;
     text-shadow: black 2px 2px 2px;
     cursor: url(images/spider-hand.cur), default;
+    border: solid 1px whitesmoke;
 }
 
 .overlay-text {
@@ -193,13 +196,29 @@ a:hover,
 }
 
 .memory-game {
-    height: 75vh;
-    width: 65vh;
+    height: 80vh;
+    width: 60vh;
     margin: auto;
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1fr 1em 1fr 1em 1fr 1em 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 1em;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    cursor: url(images/spider-hand.cur), default;
+}
+
+.memory-game.hero {
+    height: 80vh;
+    width: 80vh;
+    margin: auto;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1em 1fr 1em 1fr 1em 1fr;
+    grid-template-columns: auto auto auto auto auto;
     grid-gap: 1em;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
@@ -242,12 +261,12 @@ a:hover,
         min-height: 230vh;
     }
     .memory-game {
-        width: 40vh;
+        width: 100vh;
         display: -ms-grid;
         display: grid;
         margin: auto;
         -ms-grid-columns: 1fr 1em 1fr;
-        grid-template-columns: repeat( 2, 1fr);
+        grid-template-columns: repeat( 4, 1fr);
         grid-auto-rows: 20vh;
         grid-column-gap: 1em;
         grid-row-gap: 2em;
@@ -265,6 +284,21 @@ a:hover,
     }
     #footer-text {
         font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .memory-game {
+        width: 45vh;
+        display: -ms-grid;
+        display: grid;
+        margin: auto;
+        -ms-grid-columns: 1fr 1em 1fr;
+        grid-template-columns: repeat( 2, 1fr);
+        grid-auto-rows: 20vh;
+        grid-column-gap: 1em;
+        grid-row-gap: 2em;
+        margin-bottom: 2em;
     }
 }
 

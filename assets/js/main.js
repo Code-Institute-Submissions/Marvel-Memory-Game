@@ -28,7 +28,7 @@ $(document).ready(function() {
         }
     }
 
-    let cardsList = [{
+    let easyCardsList = [{
             name: "thor",
             img: "assets/images/thor.jpg"
         },
@@ -79,7 +79,73 @@ $(document).ready(function() {
         }, {
             name: "wolverine",
             img: "assets/images/wolverine.jpg"
+        }
+    ]
+
+    let hardCardsList = [{
+            name: "thor",
+            img: "assets/images/thor.jpg"
         },
+        {
+            name: "lizard",
+            img: "assets/images/lizard.jpg"
+        },
+        {
+            name: "dr doom",
+            img: "assets/images/dr-doom.jpg"
+        },
+        {
+            name: "lizard",
+            img: "assets/images/lizard.jpg"
+        }, {
+            name: "thor",
+            img: "assets/images/thor.jpg"
+        }, {
+            name: "dr doom",
+            img: "assets/images/dr-doom.jpg"
+        }, {
+            name: "captain-britain",
+            img: "assets/images/captain-britain.jpg"
+        }, {
+            name: "captain-britain",
+            img: "assets/images/captain-britain.jpg"
+        }, {
+            name: "deadpool",
+            img: "assets/images/deadpool.jpg"
+        }, {
+            name: "deadpool",
+            img: "assets/images/deadpool.jpg"
+        }, {
+            name: "hulk",
+            img: "assets/images/hulk.jpg"
+        }, {
+            name: "hulk",
+            img: "assets/images/hulk.jpg"
+        }, {
+            name: "iron-man",
+            img: "assets/images/iron-man.jpg"
+        }, {
+            name: "iron-man",
+            img: "assets/images/iron-man.jpg"
+        }, {
+            name: "wolverine",
+            img: "assets/images/wolverine.jpg"
+        }, {
+            name: "wolverine",
+            img: "assets/images/wolverine.jpg"
+        }, {
+            name: "spider-man",
+            img: "assets/images/spider-man.jpg"
+        }, {
+            name: "spider-man",
+            img: "assets/images/spider-man.jpg"
+        }, {
+            name: "silver-surfer",
+            img: "assets/images/silver-surfer.jpg"
+        }, {
+            name: "silver-surfer",
+            img: "assets/images/silver-surfer.jpg"
+        }
     ]
 
     let audio = new audioControl;
@@ -90,14 +156,8 @@ $(document).ready(function() {
 
     //background music toggler
     $('#soundToggler').click(() => {
-        if (sound) {
-            stopBgSound();
-
-        } else {
-            startBgSound();
-        }
-        // console.log(sound);
-        // console.log({ soundToggler });
+        let soundOn = sound;
+        soundOn ? stopBgSound() : startBgSound();
     })
 
     function stopBgSound() {
@@ -115,7 +175,7 @@ $(document).ready(function() {
     }
     //timer
     function startTimer() {
-        timer = 61;
+        timer = 5;
         resetCounter = setInterval(() => {
             timer--;
             let countDownMin = Math.floor(timer / 60);
@@ -123,74 +183,130 @@ $(document).ready(function() {
             let countDownSecounds = countDownSec.toString().padStart(2, '0');
             $('#time-remaining').html(`${countDownMin}:${countDownSecounds}`);
             if (timer === 0) {
-                clearInterval(resetCounter);
-                audio.stopMusic();
-                matchedCards = [];
                 timeUp();
-                $('#time-remaining').html('0');
             }
         }, 1000);
+    }
 
-        function timeUp() {
-            setTimeout(() => {
-                audio.victorySound();
-                $('.memory-card').removeClass('flip');
-                $('.memory-card').removeClass('matched');
-                $('#game-over-text').addClass('visible');
-            }, 1000)
-            $('#game-over-text').click(() => {
-                sound = true
+    function timeUp() {
+        clearInterval(resetCounter);
+        audio.stopMusic();
+        $('#soundToggler').addClass('soundOn');
+        $('#soundToggler').removeClass('soundOff');
+        matchedCards = [];
+        easyLevel = null;
+        moveCounter = 0;
+        sound = true;
+
+        setTimeout(() => {
+            $('.memory-card').removeClass('flip');
+            $('#game-over-text').addClass('visible');
+            audio.victorySound();
+            $('#pairs').html(0);
+            $('#moves').html(0);
+            $('#time-remaining').html('0');
+            $('.memory-card').removeClass('matched');
+            $('#game-over-btn').click(() => {
+                $('.memory-game').html('');
+                $('.memory-game').removeClass('hero');
                 $('#game-over-text').removeClass('visible');
-                $('#soundToggler').addClass('soundOn')
-                $('#soundToggler').removeClass('soundOff')
-                $('#pairs').html(0);
-                clearInterval(resetCounter);
-                shuffleCards();
-                audio.startMusic();
-                startTimer();
-            })
-        }
+                $('#difficulty-overlay').addClass('visible');
+            });
+        }, 1200);
     }
 
-    function getCards() {
-        let cardImages = cardsList;
-        cardImages.forEach((image) => {
-            const tiles = document.createElement('div');
-            $(tiles).addClass('memory-card').attr('data-image', image.name).html(`<img class="front-face" src="${image.img}" alt="${image.name} image" />
-            <img class="back-face" src="assets/images/marvel-logo2.png" alt="marvel-logo" />`);
-            console.log(image.name, tiles);
-            $('.memory-game').prepend(tiles);
-        })
-    }
+    // function timeUp() {
+    //     setTimeout(() => {
+    //         audio.victorySound();
+    //         $('.memory-card').removeClass('flip');
+    //         $('.memory-card').removeClass('matched');
+    //         $('#game-over-text').addClass('visible');
+    //     }, 1000)
 
-    getCards();
+    //     $('#game-over-btn').click(() => {
+    //         $('#difficulty-overlay').addClass('visilble');
+    //         sound = true
+    //         easyLevel = null;
+    //         moveCounter = 0;
+    //         $('#game-over-text').removeClass('visible');
+    //         $('#soundToggler').addClass('soundOn');
+    //         $('#soundToggler').removeClass('soundOff');
+    //         $('#pairs').html(0);
+    //         $('#moves').html(0);
+    //         $('#time-remaining').html('0');
 
-    const cards = document.querySelectorAll('.memory-card');
-    // Click to start overlay
+    //         clearInterval(resetCounter);
+    //         // shuffleCards();
+    //         audio.startMusic();
+    //         //startTimer();
+    //     })
+    // }
+
+    let easyLevel = null;
+    $('#easyBtn').click(() => {
+        $('#difficulty-overlay').removeClass('visible');
+        $('#start-overlay').addClass('visible');
+        easyLevel = true;
+
+    });
+
+    $('#heroBtn').click(() => {
+
+        $('#difficulty-overlay').removeClass('visible');
+        $('#start-overlay').addClass('visible');
+        $('.memory-game').addClass('hero');
+        easyLevel = false;
+    });
+
+
     $('#start-overlay').click(() => {
-        getData();
+        cardsList = [];
         $('#start-overlay').removeClass('visible');
+        shuffleCards();
         audio.startMusic();
         startTimer();
     });
 
+    function getCards() {
+
+        if (easyLevel) {
+            cardsList = easyCardsList;
+        } else {
+            cardsList = hardCardsList;
+        }
+        let cardImages = cardsList;
+        console.log(cardsList);
+        cardImages.forEach((image) => {
+            const tiles = document.createElement('div');
+            $(tiles).addClass('memory-card').attr('data-image', image.name).html(`<img class="front-face" src="${image.img}" alt="${image.name} image" />
+            <img class="back-face" src="assets/images/marvel-logo2.png" alt="marvel-logo" />`);
+            $('.memory-game').prepend(tiles);
+        })
+    }
+
+    // Click to start overlay
+
+
     function shuffleCards() {
+        getCards();
+        const cards = document.querySelectorAll('.memory-card');
         // shuffle using flex order value
         cards.forEach(function(card) {
             let shufflePos = Math.floor(Math.random() * 16);
             card.style.order = shufflePos;
-            cards.forEach(function(card) {
+            cards.forEach((card) => {
                 card.addEventListener('click', flipCard);
             });
         });
     }
 
-    shuffleCards();
+
 
     let isCardFlipped = false;
     let lockCards = false;
     let fistCard;
     let secondCard;
+    let moveCounter = 0;
 
     // Flip card with a click
     function flipCard() {
@@ -217,18 +333,14 @@ $(document).ready(function() {
         //  ternary operator 
         let doMatch = fistCard.dataset.image === secondCard.dataset.image;
         doMatch ? disableCards() : unflipCards();
-        // if (fistCard.dataset.image === secondCard.dataset.image) {
-        //     disableCards();
-        // } else {
-        //     //does not match. Timeout used to view 2nd card
-        //     unflipCards();
-        // }
+        moveCounter++;
+        $('#moves').html(moveCounter);
     }
 
     function disableCards() {
         fistCard.removeEventListener('click', flipCard);
         secondCard.removeEventListener('click', flipCard);
-        //console.log(fistCard.classList);
+
         fistCard.classList.add('matched');
         secondCard.classList.add('matched');
         audio.match();
@@ -239,12 +351,13 @@ $(document).ready(function() {
         let matches = matchedPairs / 2;
         $('#pairs').html(matches);
 
-
-        if (matchedCards.length === 16) {
+        if (matchedCards.length === cardsList.length) {
             clearInterval(resetCounter);
             matchedCards.length = 0;
             matches = 0;
+
             audio.stopMusic();
+            easyLevel = null;
 
             setTimeout(function() {
                 $('.memory-card').removeClass('flip');
@@ -252,14 +365,16 @@ $(document).ready(function() {
                 audio.victorySound();
 
                 $('.memory-card').removeClass('matched');
-                $('#you-won-text').click(function() {
+                $('#you-won-text').click(() => {
+                    easyLevel = null
                     sound = true
                     $('#soundToggler').addClass('soundOn')
                     $('#soundToggler').removeClass('soundOff')
-                    shuffleCards();
                     $('#pairs').html(0);
+                    $('#moves').html(0);
+                    $('#time-remaining').html('0');
                     matchedCards = [];
-
+                    moveCounter = 0;
                 });
             }, 1200);
 
@@ -285,6 +400,9 @@ $(document).ready(function() {
     }
 
     $('#prizeBtn').click(function() {
+        cardsList = [];
+        $('.memory-game').html('');
+        $('.memory-game').removeClass('hero');
         $('#you-won-text').removeClass('visible');
         $('#prize-overlay').addClass('visible');
 
@@ -292,7 +410,7 @@ $(document).ready(function() {
 
     $('#closePrize').click(function() {
         $('#prize-overlay').removeClass('visible');
-        $('#start-overlay').addClass('visible');
+        $('#difficulty-overlay').addClass('visible');
 
     })
 
@@ -304,7 +422,7 @@ $(document).ready(function() {
         let prizeCharacters = [];
         $.getJSON(baseURL + apikey, function(data) {
             $('#footer-text').html(data.attributionText.toUpperCase());
-            console.log(data);
+
             let prizeList = data.data.results;
             for (prize of prizeList) {
                 if (prize.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || prize.thumbnail.extension === "gif") {
@@ -313,15 +431,15 @@ $(document).ready(function() {
                     prizeCharacters.push(prize);
                 }
             }
-            console.log(prizeCharacters);
+
 
             let prizeNum = Math.floor(Math.random() * prizeCharacters.length + 1);
             prizeCharacter = (prizeCharacters[prizeNum]);
-            console.log(prizeCharacter.name);
+
             $('.prize-text').html(prizeCharacter.name.toUpperCase());
             $('.prize-content').html(`<img src="${prizeCharacter.thumbnail.path}/portrait_fantastic.${prizeCharacter.thumbnail.extension}"></img>`);
             $('.prize-bio').html(`<a target="_blank" href="${prizeCharacter.urls[0].url}">click <span>here</span> to GO TO MARVEL.com for more on ${prizeCharacter.name} or...</a>`);
-            console.log(prizeCharacter.thumbnail.path);
+
         });
     }
     getData();
