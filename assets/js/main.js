@@ -175,7 +175,7 @@ $(document).ready(function() {
     }
     //timer
     function startTimer() {
-        timer = 5;
+        timer = 60;
         resetCounter = setInterval(() => {
             timer--;
             let countDownMin = Math.floor(timer / 60);
@@ -214,33 +214,6 @@ $(document).ready(function() {
             });
         }, 1200);
     }
-
-    // function timeUp() {
-    //     setTimeout(() => {
-    //         audio.victorySound();
-    //         $('.memory-card').removeClass('flip');
-    //         $('.memory-card').removeClass('matched');
-    //         $('#game-over-text').addClass('visible');
-    //     }, 1000)
-
-    //     $('#game-over-btn').click(() => {
-    //         $('#difficulty-overlay').addClass('visilble');
-    //         sound = true
-    //         easyLevel = null;
-    //         moveCounter = 0;
-    //         $('#game-over-text').removeClass('visible');
-    //         $('#soundToggler').addClass('soundOn');
-    //         $('#soundToggler').removeClass('soundOff');
-    //         $('#pairs').html(0);
-    //         $('#moves').html(0);
-    //         $('#time-remaining').html('0');
-
-    //         clearInterval(resetCounter);
-    //         // shuffleCards();
-    //         audio.startMusic();
-    //         //startTimer();
-    //     })
-    // }
 
     let easyLevel = null;
     $('#easyBtn').click(() => {
