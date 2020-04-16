@@ -8,7 +8,7 @@ The game has been created for pleasure and entertainment for all ages. Using ima
 
 The game has been designed to be as intutive and user friendly as possible with an retro feel for enjoyment for all ages. It allows for the user to 'look' for matching pairs of some of their favorite Marvel characters. On loading of the game a 'click to start' overlay appears with the pre text 'Find the matching pairs'. On clicking of the overlay the game starts and the count down timer starts as well as the background music. If all pairs are matched within the time an overlay with 'You won!' & 'click to restart' appears else a 'Game Over' overlay and 'click to restart' text appears if time runs out. 
 
-To view concept wireframes please click [wireframes]
+To view concept wireframes please click [wireframes](https://github.com/NickBell123/Marvel-Memory-Game/tree/master/wireframes).
 
 ### General User Stories
 
@@ -78,9 +78,9 @@ Step 7: When returning to the github repository settings, scroll down to GitHub 
 ## Credits & Acknowledgement
 * Fonts credits to [fontspace.com](https://www.fontspace.com/category/marvel) & [dafont.com](https://www.dafont.com/badaboom-bb.font.)
 
-* Thanks to  [Marvels Dev Portal](https://developer.marvel.com/) for their resource.
+* Thanks to  [Marvels Dev Portal](https://developer.marvel.com/) for their resource. Slack and Slaxk overflow community, as wellas Eventyret_mentor.
 
-And special thank you to Anthony Ngene, mentor.
+A special thank you to Anthony Ngene, mentor.
 
 
 
