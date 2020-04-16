@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+
     class audioControl {
         constructor() {
             this.bgMusic = new Audio('assets/sounds/backgroundMusic.mp3');
@@ -175,6 +177,7 @@ $(document).ready(function() {
     }
     //timer
     function startTimer() {
+
         timer = 60;
         resetCounter = setInterval(() => {
             timer--;
@@ -234,14 +237,29 @@ $(document).ready(function() {
 
     $('#start-overlay').click(() => {
         cardsList = [];
+        resetGame();
         $('#start-overlay').removeClass('visible');
         shuffleCards();
         audio.startMusic();
         startTimer();
     });
 
-    function getCards() {
+    $('#prizeBtn').click(() => {
+        cardsList = [];
+        $('.memory-game').html('');
+        $('.memory-game').removeClass('hero');
+        $('#you-won-text').removeClass('visible');
+        $('#prize-overlay').addClass('visible');
 
+    })
+
+    $('#closePrize').click(() => {
+        $('#prize-overlay').removeClass('visible');
+        $('#difficulty-overlay').addClass('visible');
+
+    })
+
+    function getCards() {
         if (easyLevel) {
             cardsList = easyCardsList;
         } else {
@@ -257,9 +275,6 @@ $(document).ready(function() {
         })
     }
 
-    // Click to start overlay
-
-
     function shuffleCards() {
         getCards();
         const cards = document.querySelectorAll('.memory-card');
@@ -272,8 +287,6 @@ $(document).ready(function() {
             });
         });
     }
-
-
 
     let isCardFlipped = false;
     let lockCards = false;
@@ -372,48 +385,34 @@ $(document).ready(function() {
         secondCard = null;
     }
 
-    $('#prizeBtn').click(function() {
-        cardsList = [];
-        $('.memory-game').html('');
-        $('.memory-game').removeClass('hero');
-        $('#you-won-text').removeClass('visible');
-        $('#prize-overlay').addClass('visible');
-
-    })
-
-    $('#closePrize').click(function() {
-        $('#prize-overlay').removeClass('visible');
-        $('#difficulty-overlay').addClass('visible');
-
-    })
-
-    function getData() {
-        const baseURL = "https://gateway.marvel.com/v1/public/characters?"
-            // const apikey = "&limit=100&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2"
+    function fetchData() {
+        let baseURL = "https://gateway.marvel.com/v1/public/characters?";
+        // const apikey = "&limit=100&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2"
         let offSet = (Math.floor(Math.random() * 15)) * 100;
-        let apikey = `&limit=100&offset=${offSet}&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2`
-        let prizeCharacters = [];
-        $.getJSON(baseURL + apikey, function(data) {
-            $('#footer-text').html(data.attributionText.toUpperCase());
+        let apikey = `&limit=100&offset=${offSet}&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2`;
+        let prizeCharacters1 = [];
+        fetch(baseURL + apikey)
+            .then(response => response.json())
+            .then(json => {
+                let data = json;
+                $('#footer-text').html(data.attributionText.toUpperCase());
+                let prizeList = data.data.results;
 
-            let prizeList = data.data.results;
-            for (prize of prizeList) {
-                if (prize.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || prize.thumbnail.extension === "gif") {
-                    continue;
-                } else {
-                    prizeCharacters.push(prize);
+                for (prize of prizeList) {
+                    if (prize.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || prize.thumbnail.extension === "gif") {
+                        continue;
+                    } else {
+                        prizeCharacters1.push(prize);
+                    }
                 }
-            }
-
-
-            let prizeNum = Math.floor(Math.random() * prizeCharacters.length + 1);
-            prizeCharacter = (prizeCharacters[prizeNum]);
-
-            $('.prize-text').html(prizeCharacter.name.toUpperCase());
-            $('.prize-content').html(`<img src="${prizeCharacter.thumbnail.path}/portrait_fantastic.${prizeCharacter.thumbnail.extension}"></img>`);
-            $('.prize-bio').html(`<a target="_blank" href="${prizeCharacter.urls[0].url}">click <span>here</span> to GO TO MARVEL.com for more on ${prizeCharacter.name} or...</a>`);
-
-        });
+                let prizeNum = Math.floor(Math.random() * prizeCharacters1.length + 1);
+                let prizeCharacter = (prizeCharacters1[prizeNum]);
+                $('.prize-text').html(prizeCharacter.name.toUpperCase());
+                $('.prize-content').html(`<img src="${prizeCharacter.thumbnail.path}/portrait_fantastic.${prizeCharacter.thumbnail.extension}"></img>`);
+                $('.prize-bio').html(`<a target="_blank" href="${prizeCharacter.urls[0].url}">click <span>here</span> to GO TO MARVEL.com for more on ${prizeCharacter.name} or...</a>`);
+                console.log(prizeCharacter);
+            })
+            .catch(err => console.log(err));
     }
-    getData();
+    fetchData();
 });
