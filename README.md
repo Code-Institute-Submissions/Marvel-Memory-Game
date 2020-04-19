@@ -15,6 +15,7 @@ To view concept wireframes please click [wireframes](https://github.com/NickBell
 * As a type of user, I would like to enjoy a simple memory card game with visually appealing format.
 * As a type of user, I would enjoy viewing and matching images of Marvel characters.
 * As a type of user, I would like to play a game that doesn't take too long but has a small challenge.
+* As a type of user, I would like to enjoy a simple memory card game that provides a 'reward' for completion.
 
 ### Real Life User Stories
 
@@ -25,15 +26,17 @@ To view concept wireframes please click [wireframes](https://github.com/NickBell
 
 * The game is designed to be as intuitive as possible, form using a classic game method to simple prompts in the game the user should     intuitivly know/ understand' the aim and the proceedure.
 * Oringinal images form Marvel Api.
+* An easy level and hero level of difficulty
+* Random character image and link pulled from Marvel API as 'reward' for completing the game.
 * Retro sound effects on game start, card flip, card match and game over.
-* Count down timer and pairs counter.
+* Count down timer, pairs counter and move counter.
 * Mute sound fx button
 
 ### Future Features
 
-* Level system and reward for completion. Reward could be a bio of a character in modal form.
+* Additional levels.
 * Scoring system using the timer and pairs to genterate a 'score'.
-
+* Prixe teir system
 
 ## Technologies Used
 
