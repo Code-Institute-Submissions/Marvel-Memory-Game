@@ -254,7 +254,6 @@ a:hover,
 
 @media screen and (max-width: 767px) {
     .memory-game.hero {
-        width: 35vh;
         display: -ms-grid;
         display: grid;
         margin: auto;
@@ -293,7 +292,8 @@ a:hover,
 }
 
 @media screen and (max-width: 425px) {
-    .memory-game {
+    .memory-game,
+    .memory-game.hero {
         width: 35vh;
         display: -ms-grid;
         display: grid;

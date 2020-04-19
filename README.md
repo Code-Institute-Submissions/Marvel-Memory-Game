@@ -78,7 +78,7 @@ Step 7: When returning to the github repository settings, scroll down to GitHub 
 ## Credits & Acknowledgement
 * Fonts credits to [fontspace.com](https://www.fontspace.com/category/marvel) & [dafont.com](https://www.dafont.com/badaboom-bb.font.)
 
-* Thanks to  [Marvels Dev Portal](https://developer.marvel.com/) for their resource. Slack and Slaxk overflow community, as wellas Eventyret_mentor.
+* Thanks to  [Marvels Dev Portal](https://developer.marvel.com/) for their resource. Slack and Slack Overflow community, as well as Eventyret_mentor.
 
 A special thank you to Anthony Ngene, mentor.
 
