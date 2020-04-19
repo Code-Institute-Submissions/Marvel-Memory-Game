@@ -45,7 +45,7 @@
     }
     
     .wrapper {
-        min-height: 150vh;
+        min-height: 100vh;
         min-width: 100%;
         background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.6)));
         background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
@@ -60,7 +60,6 @@
         color: red;
         font-size: 4em;
         letter-spacing: 0.2rem;
-        margin-left: 1rem;
         text-shadow: black 2px 2px 2px;
     }
     
@@ -192,7 +191,7 @@
     
     .memory-game {
         height: 80vh;
-        width: 70vh;
+        width: 65vh;
         margin: auto;
         display: -ms-grid;
         display: grid;
@@ -207,27 +206,17 @@
     }
     
     .memory-game.hero {
-        height: 80vh;
-        width: 70vh;
-        margin: auto;
-        display: -ms-grid;
-        display: grid;
+        width: 80vh;
         -ms-grid-columns: 1fr 1em 1fr 1em 1fr 1em 1fr;
         grid-template-columns: auto auto auto auto auto;
-        grid-gap: 1em;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        -webkit-perspective: 1000px;
-        perspective: 1000px;
-        cursor: url(images/spider-hand.cur), default;
     }
     
     .memory-card {
         position: relative;
         display: flex;
         align-items: center;
-        /* width: 100%;
-    height: 100%; */
+        width: 100%;
+        height: 100%;
         background-color: rgb(233, 33, 33);
         border-radius: 5px;
         -webkit-transform: scale(1);
@@ -288,6 +277,9 @@
 } */
     
     @media screen and (max-width: 425px) {
+        h1 {
+            font-size: 3em;
+        }
         .memory-game,
         .memory-game.hero {
             width: 35vh;
@@ -300,6 +292,9 @@
             grid-column-gap: 1em;
             grid-row-gap: 2em;
             margin-bottom: 2em;
+        }
+        .wrapper {
+            min-height: 230vh;
         }
     }
     
