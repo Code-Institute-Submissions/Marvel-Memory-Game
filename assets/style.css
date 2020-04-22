@@ -2,11 +2,8 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-.game-info p {
-    margin: 0;
-    text-shadow: black 2px 2px 2px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 @font-face {
@@ -21,8 +18,15 @@ html {
 
 body {
     font-family: marvelFont;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     height: 100vh;
     background-image: url('images/ironman-gb-image.jpg');
@@ -31,11 +35,15 @@ body {
     background-position: center;
     background-attachment: fixed;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 .wrapper {
     min-height: 100vh;
     min-width: 100%;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.6)));
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -47,6 +55,11 @@ h1 {
     color: red;
     font-size: 4em;
     letter-spacing: 0.2rem;
+    text-shadow: black 2px 2px 2px;
+}
+
+.game-info p {
+    margin: 0;
     text-shadow: black 2px 2px 2px;
 }
 
@@ -129,14 +142,24 @@ a:hover,
     left: 0;
     bottom: 0;
     text-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     z-index: 100;
 }
 
 .overlay-text.visible {
+    -webkit-animation: overlay-grow 500ms forwards;
     animation: overlay-grow 500ms forwards;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
 }
 
@@ -170,11 +193,14 @@ a:hover,
     height: 80vh;
     width: 65vh;
     margin: auto;
+    display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1fr 1em 1fr 1em 1fr 1em 1fr;
     grid-template-columns: auto auto auto auto;
     grid-gap: 1em;
     flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -webkit-perspective: 1000px;
     perspective: 1000px;
     cursor: url(images/spider-hand.cur), default;
 }
@@ -187,16 +213,23 @@ a:hover,
 
 .memory-card {
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     align-items: center;
     width: 100%;
     height: 100%;
     background-color: rgb(233, 33, 33);
     border-radius: 5px;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
+    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     transition: -webkit-transform .75s;
     transition: transform .75s;
+    -o-transition: transform .75s;
+    transition: transform .75s, -webkit-transform .75s;
     box-shadow: #191919 5px 5px 5px 0px;
 }
 
@@ -240,15 +273,25 @@ a:hover,
 }
 
 .memory-card:active {
+    -webkit-transform: scale(.97);
+    -ms-transform: scale(.97);
     transform: scale(.97);
+    -webkit-transition: -webkit-transform .2s ease-out;
+    transition: -webkit-transform .2s ease-out;
+    -o-transition: transform .2s ease-out;
     transition: transform .2s ease-out;
+    transition: transform .2s ease-out, -webkit-transform .2s ease-out;
 }
 
 .memory-card.flip {
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
-    background-color: transparent;
-    box-shadow: #af1616 -5px 5px 5px 0px;
+    -webkit-transition: -webkit-transform .2s ease-out;
+    transition: -webkit-transform .2s ease-out;
+    -o-transition: transform .2s ease-out;
     transition: transform .2s ease-out;
+    transition: transform .2s ease-out, -webkit-transform .2s ease-out;
+    box-shadow: #af1616 -5px 5px 5px 0px;
 }
 
 .front-face,
@@ -257,7 +300,11 @@ a:hover,
     border-radius: 5px;
     position: absolute;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 .back-face {
@@ -267,6 +314,7 @@ a:hover,
 
 .front-face {
     height: 100%;
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
 
