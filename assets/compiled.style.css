@@ -1,6 +1,9 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
 html {
     margin: 0;
     padding: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -21,8 +24,15 @@ html {
 
 body {
     font-family: marvelFont;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     height: 100vh;
     background-image: url('images/ironman-gb-image.jpg');
@@ -30,12 +40,15 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 .wrapper {
     min-height: 100vh;
     min-width: 100%;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.6)));
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -112,6 +125,8 @@ a span {
 
 a:hover,
 .btn:hover {
+    -webkit-transition: 0.3s ease-in;
+    -o-transition: 0.3s ease-in;
     transition: 0.3s ease-in;
     color: whitesmoke;
     text-decoration: none;
@@ -129,14 +144,24 @@ a:hover,
     left: 0;
     bottom: 0;
     text-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     z-index: 100;
 }
 
 .overlay-text.visible {
+    -webkit-animation: overlay-grow 500ms forwards;
     animation: overlay-grow 500ms forwards;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
 }
 
@@ -170,11 +195,14 @@ a:hover,
     height: 80vh;
     width: 65vh;
     margin: auto;
+    display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1fr 1em 1fr 1em 1fr 1em 1fr;
     grid-template-columns: auto auto auto auto;
     grid-gap: 1em;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-perspective: 1000px;
     perspective: 1000px;
     cursor: url(images/spider-hand.cur), default;
 }
@@ -187,16 +215,27 @@ a:hover,
 
 .memory-card {
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     width: 100%;
     height: 100%;
     background-color: rgb(233, 33, 33);
     border-radius: 5px;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
+    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     transition: -webkit-transform .75s;
+    -webkit-transition: -webkit-transform .75s;
+    -o-transition: transform .75s;
     transition: transform .75s;
+    transition: transform .75s, -webkit-transform .75s;
+    -webkit-box-shadow: #191919 5px 5px 5px 0px;
     box-shadow: #191919 5px 5px 5px 0px;
 }
 
@@ -240,15 +279,27 @@ a:hover,
 }
 
 .memory-card:active {
+    -webkit-transform: scale(.97);
+    -ms-transform: scale(.97);
     transform: scale(.97);
+    -webkit-transition: -webkit-transform .2s ease-out;
+    transition: -webkit-transform .2s ease-out;
+    -o-transition: transform .2s ease-out;
     transition: transform .2s ease-out;
+    transition: transform .2s ease-out, -webkit-transform .2s ease-out;
 }
 
 .memory-card.flip {
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
     background-color: transparent;
+    -webkit-box-shadow: #af1616 -5px 5px 5px 0px;
     box-shadow: #af1616 -5px 5px 5px 0px;
+    -webkit-transition: -webkit-transform .2s ease-out;
+    transition: -webkit-transform .2s ease-out;
+    -o-transition: transform .2s ease-out;
     transition: transform .2s ease-out;
+    transition: transform .2s ease-out, -webkit-transform .2s ease-out;
 }
 
 .front-face,
@@ -256,7 +307,9 @@ a:hover,
     width: 100%;
     border-radius: 5px;
     position: absolute;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -267,6 +320,7 @@ a:hover,
 
 .front-face {
     height: 100%;
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
 
