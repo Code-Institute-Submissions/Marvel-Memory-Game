@@ -175,10 +175,31 @@ $(document).ready(function() {
         $('#soundToggler').removeClass('soundOff')
         audio.startMusic();
     }
-    //timer
-    function startTimer() {
+    //timer and level check
+    let easyLevel = null;
+    $('#easyBtn').click(() => {
+        $('#difficulty-overlay').removeClass('visible');
+        $('#start-overlay').addClass('visible');
+        easyLevel = true;
 
-        timer = 60;
+    });
+
+    $('#heroBtn').click(() => {
+
+        $('#difficulty-overlay').removeClass('visible');
+        $('#start-overlay').addClass('visible');
+        $('.memory-game').addClass('hero');
+        easyLevel = false;
+
+    });
+
+    function startTimer() {
+        if (easyLevel) {
+            timer = 60;
+        } else {
+            timer = 90;
+        }
+
         resetCounter = setInterval(() => {
             timer--;
             let countDownMin = Math.floor(timer / 60);
@@ -218,23 +239,6 @@ $(document).ready(function() {
         }, 1200);
     }
 
-    let easyLevel = null;
-    $('#easyBtn').click(() => {
-        $('#difficulty-overlay').removeClass('visible');
-        $('#start-overlay').addClass('visible');
-        easyLevel = true;
-
-    });
-
-    $('#heroBtn').click(() => {
-
-        $('#difficulty-overlay').removeClass('visible');
-        $('#start-overlay').addClass('visible');
-        $('.memory-game').addClass('hero');
-        easyLevel = false;
-    });
-
-
     $('#start-overlay').click(() => {
         cardsList = [];
         resetGame();
@@ -256,7 +260,7 @@ $(document).ready(function() {
     $('#closePrize').click(() => {
         $('#prize-overlay').removeClass('visible');
         $('#difficulty-overlay').addClass('visible');
-
+        fetchData();
     })
 
     function getCards() {
@@ -266,7 +270,7 @@ $(document).ready(function() {
             cardsList = hardCardsList;
         }
         let cardImages = cardsList;
-        console.log(cardsList);
+
         cardImages.forEach((image) => {
             const tiles = document.createElement('div');
             $(tiles).addClass('memory-card').attr('data-image', image.name).html(`<img class="front-face" src="${image.img}" alt="${image.name} image" />
@@ -410,7 +414,7 @@ $(document).ready(function() {
                 $('.prize-text').html(prizeCharacter.name.toUpperCase());
                 $('.prize-content').html(`<img src="${prizeCharacter.thumbnail.path}/portrait_fantastic.${prizeCharacter.thumbnail.extension}"></img>`);
                 $('.prize-bio').html(`<a target="_blank" href="${prizeCharacter.urls[0].url}">click <span>here</span> to GO TO MARVEL.com for more on ${prizeCharacter.name} or...</a>`);
-                console.log(prizeCharacter);
+
             })
             .catch(err => console.log(err));
     }
