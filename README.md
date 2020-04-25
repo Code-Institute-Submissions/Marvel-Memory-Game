@@ -1,6 +1,6 @@
 ﻿# Marvel-Memory-Game-MS2
  
-To play the game please click on the following link https://nickbell123.github.io/Marvel-Memory-Game/ . 
+To play my the game please click on the following link https://nickbell123.github.io/Marvel-Memory-Game/ 
  
 The game has been created for pleasure and entertainment for all ages. Using images pulled from Marvel API, the game allows 'players/    Marvel fans' match two cards of the same character image making a pair. the aim is to complete before the timer reaches zero.
  
@@ -36,7 +36,7 @@ To view concept wireframes please click [wireframes](https://github.com/NickBell
 
 * Additional levels.
 * Scoring system using the timer and pairs to genterate a 'score'.
-* Prixe teir system
+* Prize teir system
 
 ## Technologies Used
 
@@ -54,7 +54,7 @@ To view concept wireframes please click [wireframes](https://github.com/NickBell
 
 ## Bugs
 
-The main issue was on IOS devices the images would not flip to display the 'backface' of the card. The issue was resolved after parsing the CSS through Autoprefixer and adding correct vendor prefixes.
+The main issue was on IOS devices the images would not flip to display the 'backface' of the card. The issue was resolved after parsing the CSS through Autoprefixer and adding correct vendor prefixes. 
 
 ## Deployment
 
