@@ -51,10 +51,11 @@ To view concept wireframes please click [wireframes](https://github.com/NickBell
 2. Responsivness of the game was tested using various devices of diffrent screen sizes. Iphone X, Ipad, laptop & desktop all tested.
 3. Multiple browser testing using Brave, IE, Firefox and Safari.
 4. Tested game with friend and family for ease of use and simplicity.
+5. Played through many different outcomes, such letting timer runout, double clicking cards with no issues.
 
 ## Bugs
 
-The main issue was on IOS devices the images would not flip to display the 'backface' of the card. The issue was resolved after parsing the CSS through Autoprefixer and adding correct vendor prefixes. 
+The main issue was on IOS devices the images would not flip to display the 'backface' of the card. The issue was resolved by changing the background colour style form the card element to the fornt-face element.
 
 ## Deployment
 
