@@ -6,12 +6,12 @@
     
     @font-face {
         font-family: marvelFont;
-        src: url('fonts/Marvel.ttf') format('truetype');
+        src: url('../fonts/Marvel.ttf') format('truetype');
     }
     
     @font-face {
         font-family: comicFont;
-        src: url('fonts/comicFont.ttf') format('truetype');
+        src: url('../fonts/comicFont.ttf') format('truetype');
     }
     
     body {
@@ -20,7 +20,7 @@
         flex-direction: column;
         align-items: center;
         height: 100vh;
-        background-image: url('images/ironman-gb-image.jpg');
+        background-image: url('../images/ironman-gb-image.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -62,11 +62,11 @@
     }
     
     .soundOn {
-        background-image: url('images/unmute_icon.png');
+        background-image: url('../images/unmute_icon.png');
     }
     
     .soundOff {
-        background-image: url('images/mute_icon.png');
+        background-image: url('../images/mute_icon.png');
     }
     
     .game-info-container {
@@ -100,7 +100,7 @@
         text-decoration: none;
         background-color: transparent;
         font-size: 2rem;
-        cursor: url(images/spider-hand.cur), default;
+        cursor: url(../images/spider-hand.cur), default;
     }
     
     a span {
@@ -114,7 +114,7 @@
         color: whitesmoke;
         text-decoration: none;
         text-shadow: black 2px 2px 2px;
-        cursor: url(images/spider-hand.cur), default;
+        cursor: url(../images/spider-hand.cur), default;
         border: solid 1px whitesmoke;
     }
     
@@ -181,7 +181,7 @@
         -ms-flex-wrap: wrap;
         -webkit-perspective: 1000px;
         perspective: 1000px;
-        cursor: url(images/spider-hand.cur), default;
+        cursor: url(../images/spider-hand.cur), default;
     }
     
     .memory-game.hero {

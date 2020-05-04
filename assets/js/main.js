@@ -1,6 +1,4 @@
 $(document).ready(function() {
-
-
     class audioControl {
         constructor() {
             this.bgMusic = new Audio('assets/sounds/backgroundMusic.mp3');
@@ -29,7 +27,7 @@ $(document).ready(function() {
             this.victory.play();
         }
     }
-
+    // Card List Info
     let easyCardsList = [{
             name: "thor",
             img: "assets/images/thor.jpg"
@@ -82,7 +80,7 @@ $(document).ready(function() {
             name: "wolverine",
             img: "assets/images/wolverine.jpg"
         }
-    ]
+    ];
 
     let hardCardsList = [{
             name: "thor",
@@ -148,9 +146,9 @@ $(document).ready(function() {
             name: "silver-surfer",
             img: "assets/images/silver-surfer.jpg"
         }
-    ]
+    ];
 
-    let audio = new audioControl;
+    let audio = new audioControl();
     let timer;
     let resetCounter;
     let matchedCards = [];
@@ -160,22 +158,22 @@ $(document).ready(function() {
     $('#soundToggler').click(() => {
         let soundOn = sound;
         soundOn ? stopBgSound() : startBgSound();
-    })
+    });
 
     function stopBgSound() {
-        sound = false
-        $('#soundToggler').addClass('soundOff')
-        $('#soundToggler').removeClass('soundOn')
+        sound = false;
+        $('#soundToggler').addClass('soundOff');
+        $('#soundToggler').removeClass('soundOn');
         audio.stopMusic();
     }
 
     function startBgSound() {
-        sound = true
-        $('#soundToggler').addClass('soundOn')
-        $('#soundToggler').removeClass('soundOff')
+        sound = true;
+        $('#soundToggler').addClass('soundOn');
+        $('#soundToggler').removeClass('soundOff');
         audio.startMusic();
     }
-    //timer and level check
+    //level check based on player button choice
     let easyLevel = null;
     $('#easyBtn').click(() => {
         $('#difficulty-overlay').removeClass('visible');
@@ -185,7 +183,6 @@ $(document).ready(function() {
     });
 
     $('#heroBtn').click(() => {
-
         $('#difficulty-overlay').removeClass('visible');
         $('#start-overlay').addClass('visible');
         $('.memory-game').addClass('hero');
@@ -193,13 +190,24 @@ $(document).ready(function() {
 
     });
 
+    // starts the game
+    $('#start-overlay').click(() => {
+
+        resetGame();
+        $('#start-overlay').removeClass('visible');
+        shuffleCards();
+        audio.startMusic();
+        startTimer();
+    });
+
+    //  start timer based on level
     function startTimer() {
         if (easyLevel) {
             timer = 60;
         } else {
             timer = 90;
         }
-
+        // Format timer and set call timeUp 
         resetCounter = setInterval(() => {
             timer--;
             let countDownMin = Math.floor(timer / 60);
@@ -220,12 +228,14 @@ $(document).ready(function() {
         matchedCards = [];
         easyLevel = null;
         moveCounter = 0;
-        sound = true;
+
 
         setTimeout(() => {
             $('.memory-card').removeClass('flip');
             $('#game-over-text').addClass('visible');
-            audio.victorySound();
+            if (sound) {
+                audio.victorySound();
+            }
             $('#pairs').html(0);
             $('#moves').html(0);
             $('#time-remaining').html('0');
@@ -239,44 +249,41 @@ $(document).ready(function() {
         }, 1200);
     }
 
-    $('#start-overlay').click(() => {
-        cardsList = [];
-        resetGame();
-        $('#start-overlay').removeClass('visible');
-        shuffleCards();
-        audio.startMusic();
-        startTimer();
-    });
-
+    // shows prize for win
     $('#prizeBtn').click(() => {
-        cardsList = [];
         $('.memory-game').html('');
         $('.memory-game').removeClass('hero');
         $('#you-won-text').removeClass('visible');
         $('#prize-overlay').addClass('visible');
 
-    })
+    });
 
     $('#closePrize').click(() => {
         $('#prize-overlay').removeClass('visible');
         $('#difficulty-overlay').addClass('visible');
         fetchData();
-    })
+    });
+
+    let maxCards;
 
     function getCards() {
+        let cardImages;
+        let cardsList;
+
         if (easyLevel) {
             cardsList = easyCardsList;
         } else {
             cardsList = hardCardsList;
         }
-        let cardImages = cardsList;
+        maxCards = cardsList.length;
+        cardImages = cardsList;
 
         cardImages.forEach((image) => {
             const tiles = document.createElement('div');
             $(tiles).addClass('memory-card').attr('data-image', image.name).html(`<img class="front-face" src="${image.img}" alt="${image.name} image" />
             <img class="back-face" src="assets/images/marvel-logo2.png" alt="marvel-logo" />`);
             $('.memory-game').prepend(tiles);
-        })
+        });
     }
 
     function shuffleCards() {
@@ -304,7 +311,9 @@ $(document).ready(function() {
         if (this === fistCard) return;
 
         $(this.classList.toggle('flip'));
-        audio.flip();
+        if (sound) {
+            audio.flip();
+        }
 
         if (!isCardFlipped) {
             //first click
@@ -333,15 +342,19 @@ $(document).ready(function() {
 
         fistCard.classList.add('matched');
         secondCard.classList.add('matched');
-        audio.match();
+        if (sound) {
+            audio.match();
+        }
         matchedCards.push(fistCard);
         matchedCards.push(secondCard);
+        console.log(matchedCards);
+        console.log(maxCards);
 
         let matchedPairs = matchedCards.length;
         let matches = matchedPairs / 2;
         $('#pairs').html(matches);
 
-        if (matchedCards.length === cardsList.length) {
+        if (matchedCards.length === maxCards) {
             clearInterval(resetCounter);
             matchedCards.length = 0;
             matches = 0;
@@ -352,14 +365,15 @@ $(document).ready(function() {
             setTimeout(function() {
                 $('.memory-card').removeClass('flip');
                 $('#you-won-text').addClass('visible');
-                audio.victorySound();
-
+                if (sound) {
+                    audio.victorySound();
+                }
                 $('.memory-card').removeClass('matched');
                 $('#you-won-text').click(() => {
-                    easyLevel = null
-                    sound = true
-                    $('#soundToggler').addClass('soundOn')
-                    $('#soundToggler').removeClass('soundOff')
+                    easyLevel = null;
+                    sound = true;
+                    $('#soundToggler').addClass('soundOn');
+                    $('#soundToggler').removeClass('soundOff');
                     $('#pairs').html(0);
                     $('#moves').html(0);
                     $('#time-remaining').html('0');
@@ -390,6 +404,7 @@ $(document).ready(function() {
     }
 
     function fetchData() {
+
         let baseURL = "https://gateway.marvel.com/v1/public/characters?";
         // const apikey = "&limit=100&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2"
         let offSet = (Math.floor(Math.random() * 15)) * 100;
@@ -402,7 +417,7 @@ $(document).ready(function() {
                 $('#footer-text').html(data.attributionText.toUpperCase());
                 let prizeList = data.data.results;
 
-                for (prize of prizeList) {
+                for (var prize of prizeList) {
                     if (prize.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || prize.thumbnail.extension === "gif") {
                         continue;
                     } else {
