@@ -51,10 +51,11 @@ To view concept wireframes please click [wireframes](https://github.com/NickBell
 2. Responsivness of the game was tested using various devices of diffrent screen sizes. Iphone X, Ipad, laptop & desktop all tested.
 3. Multiple browser testing using Brave, IE, Firefox and Safari.
 4. Tested game with friend and family for ease of use and simplicity.
+5. Played through many different outcomes, such letting timer runout, double clicking cards with no issues.
 
 ## Bugs
 
-The main issue was on IOS devices the images would not flip to display the 'backface' of the card. The issue was resolved after parsing the CSS through Autoprefixer and adding correct vendor prefixes. 
+The main issue was on IOS devices the images would not flip to display the 'backface' of the card. The issue was resolved by changing the background colour style form the card element to the fornt-face element.
 
 ## Deployment
 
@@ -79,8 +80,8 @@ Step 7: When returning to the github repository settings, scroll down to GitHub 
 <https://github.com/NickBell123/Marvel-Memory-Game/> and the game has been deployed using Github pages here [Marvel Memory Game](https://nickbell123.github.io/Marvel-Memory-Game/).
 
 ## Credits & Acknowledgement
-* Fonts credits to [fontspace.com](https://www.fontspace.com/category/marvel) & [dafont.com](https://www.dafont.com/badaboom-bb.font.)
-
+* Fonts credits to fontspace.com [link](https://www.fontspace.com/category/marvel) & dafont.com [link](https://www.dafont.com/badaboom-bb.font.)
+* Spiderman pointer credits to cursors-4u [link](http://www.cursors-4u.com/)
 * Thanks to  [Marvels Dev Portal](https://developer.marvel.com/) for their resource. Slack and Slack Overflow community, as well as Eventyret_mentor.
 
 A special thank you to Anthony Ngene, mentor.
